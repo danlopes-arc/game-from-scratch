@@ -1,0 +1,84 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GameFromScratch.Scenes
+{
+    public abstract class GameScene : DrawableGameComponent
+    {
+        protected SpriteBatch spriteBatch;
+        protected List<GameComponent> components = new List<GameComponent>();
+        protected CollisionManager collisionManager = new CollisionManager();
+        protected GameMain gameMain;
+
+        public GameScene(GameMain game, SpriteBatch spriteBatch) : base(game)
+        {
+            this.spriteBatch = spriteBatch;
+            gameMain = game;
+            Hide();
+        }
+
+        public virtual void Show()
+        {
+            Enabled = true;
+            Visible = true;
+        }
+
+        public virtual void Hide()
+        {
+            Enabled = false;
+            Visible = false;
+        }
+        public virtual void Pause()
+        {
+            Enabled = true;
+        }
+
+        public virtual void Resume()
+        {
+            Enabled = false;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            foreach (var component in components.ToList())
+            {
+                if (component.Enabled)
+                {
+                    component.Update(gameTime);
+                }
+            }
+            collisionManager.Update();
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            foreach (var component in components)
+            {
+                if (component is DrawableGameComponent)
+                {
+                    var drawableComponent = component as DrawableGameComponent;
+                    if (drawableComponent.Visible)
+                    {
+                        drawableComponent.Draw(gameTime);
+                    }
+                }
+            }
+        }
+
+
+        public virtual void AddEntity(Entity entity)
+        {
+            collisionManager.AddEntity(entity);
+            components.Add(entity);
+        }
+        public virtual void RemoveEntity(Entity entity)
+        {
+            collisionManager.RemoveEntity(entity);
+            components.Remove(entity);
+        }
+    }
+}
