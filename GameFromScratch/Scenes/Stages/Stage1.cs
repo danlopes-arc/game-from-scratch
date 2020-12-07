@@ -1,18 +1,19 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using GameFromScratch.Entities;
+using GameFromScratch.Utils;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GameFromScratch.Scenes
+namespace GameFromScratch.Scenes.Stages
 {
-    class Stage1 : GameScene
+    class Stage1 : Stage
     {
         private Player player;
         private List<Asteroid> asteroids = new List<Asteroid>();
         private SpriteFont font;
-        private int destroidAsteroids = 0;
+        private int destroyedAsteroids = 0;
 
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
@@ -32,7 +33,7 @@ namespace GameFromScratch.Scenes
             if (entity is Asteroid)
             {
                 asteroids.Remove(entity as Asteroid);
-                destroidAsteroids++;
+                destroyedAsteroids++;
             }
             base.RemoveEntity(entity);
         }
@@ -43,10 +44,10 @@ namespace GameFromScratch.Scenes
 
             if (player.Health == 0)
             {
-                gameMain.ShowGameOverScene(this);
+                gameMain.ShowGameOver(this);
             }
 
-            if (destroidAsteroids == 2)
+            if (destroyedAsteroids == 10)
             {
                 gameMain.ShowNextStage();
             }
@@ -72,7 +73,7 @@ namespace GameFromScratch.Scenes
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"Asteroids: {asteroids.Count} >> Destroyed: {destroidAsteroids} >> Health: {player.Health}";
+            var text = $"Asteroids: {asteroids.Count} >> Destroyed: {destroyedAsteroids} >> Health: {player.Health}";
             spriteBatch.DrawString(font, text, new Vector2(10, 10), Color.White);
 
             spriteBatch.End();

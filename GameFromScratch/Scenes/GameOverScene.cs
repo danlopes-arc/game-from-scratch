@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
 {
@@ -25,7 +26,7 @@ namespace GameFromScratch.Scenes
 
             if (BetterKeyboardState.IsJustDown(Keys.Enter))
             {
-                gameMain.ShowStartScene();
+                gameMain.ShowStart();
             }
         }
 

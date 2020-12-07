@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameFromScratch.Entities;
+using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
 {
@@ -32,16 +34,7 @@ namespace GameFromScratch.Scenes
             Enabled = false;
             Visible = false;
         }
-        public virtual void Pause()
-        {
-            Enabled = true;
-        }
-
-        public virtual void Resume()
-        {
-            Enabled = false;
-        }
-
+        
         public override void Update(GameTime gameTime)
         {
             foreach (var component in components.ToList())

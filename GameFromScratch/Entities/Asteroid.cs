@@ -1,11 +1,9 @@
-﻿using GameFromScratch.Scenes;
+﻿using GameFromScratch.Extensions;
+using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GameFromScratch
+namespace GameFromScratch.Entities
 {
     class Asteroid : Entity
     {
@@ -22,7 +20,7 @@ namespace GameFromScratch
 
             if (Position.X + Size.X < 0)
             {
-                scene.RemoveEntity(this);
+                Destroy();
             }
         }
 

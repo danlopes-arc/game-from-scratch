@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using GameFromScratch.Entities;
 
-namespace GameFromScratch
+namespace GameFromScratch.Utils
 {
     public class CollisionManager
     {

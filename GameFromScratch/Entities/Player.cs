@@ -1,11 +1,11 @@
-﻿using GameFromScratch.Scenes;
+﻿using GameFromScratch.Extensions;
+using GameFromScratch.Scenes;
+using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GameFromScratch
+namespace GameFromScratch.Entities
 {
     class Player : Entity
     {
@@ -44,6 +44,13 @@ namespace GameFromScratch
             else if (Position.Y + Size.Y > ScreenSize.Y)
             {
                 Position = new Vector2(Position.X, ScreenSize.Y - Size.Y);
+            }
+
+            if (BetterMouseState.IsJustDown(MouseButton.Left))
+            {
+                var missile = new Missile(scene, spriteBatch);
+                missile.Position = new Vector2(Position.X + Size.X, Position.Y + Size.Y / 2 - missile.Size.Y / 2);
+                scene.AddEntity(missile);
             }
 
         }

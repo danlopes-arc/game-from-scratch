@@ -44,6 +44,7 @@
         <e p="Entities" t="Include">
           <e p="Asteroid.cs" t="Include" />
           <e p="Entity.cs" t="Include" />
+          <e p="Missile.cs" t="Include" />
           <e p="Player.cs" t="Include" />
         </e>
         <e p="Extensions" t="Include">
@@ -65,13 +66,17 @@
           <e p="CongratulationScene.cs" t="Include" />
           <e p="GameOverScene.cs" t="Include" />
           <e p="GameScene.cs" t="Include" />
-          <e p="Stage.cs" t="Include" />
-          <e p="Stage1.cs" t="Include" />
+          <e p="Stages" t="Include">
+            <e p="Stage.cs" t="Include" />
+            <e p="Stage1.cs" t="Include" />
+          </e>
           <e p="StartScene.cs" t="Include" />
         </e>
         <e p="Utils" t="Include">
           <e p="BetterKeyboardState.cs" t="Include" />
+          <e p="BetterMouseState.cs" t="Include" />
           <e p="CollisionManager.cs" t="Include" />
+          <e p="MouseButton.cs" t="Include" />
         </e>
       </e>
       <e p="GameFromScratch.sln" t="IncludeFlat" />

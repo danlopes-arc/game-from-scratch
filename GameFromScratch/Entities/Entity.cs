@@ -1,11 +1,8 @@
 ﻿using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GameFromScratch
+namespace GameFromScratch.Entities
 {
     public abstract class Entity : DrawableGameComponent
     {
@@ -42,6 +39,16 @@ namespace GameFromScratch
         public virtual void Move(GameTime gameTime)
         {
             Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public virtual void Destroy()
+        {
+            scene.RemoveEntity(this);
+        }
+        
+        public virtual void Kill()
+        {
+            Destroy();
         }
     }
 }

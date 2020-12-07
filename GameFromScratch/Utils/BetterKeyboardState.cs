@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GameFromScratch
+namespace GameFromScratch.Utils
 {
     public static class BetterKeyboardState
     {

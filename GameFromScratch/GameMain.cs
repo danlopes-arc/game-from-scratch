@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using GameFromScratch.Scenes.Stages;
+using GameFromScratch.Utils;
 
 namespace GameFromScratch
 {
@@ -11,11 +13,11 @@ namespace GameFromScratch
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private List<GameScene> stages = new List<GameScene>();
+        private List<Stage> stages = new List<Stage>();
         private GameOverScene gameOverScene;
         private StartScene startScene;
         private CongratulationScene congratulationScene;
-        private int stageIndex = 0;
+        private int stageIndex;
 
         public GameMain()
         {
@@ -24,24 +26,20 @@ namespace GameFromScratch
             IsMouseVisible = true;
         }
 
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
-            base.Initialize();
-        }
-
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
             startScene = new StartScene(this, spriteBatch);
             congratulationScene = new CongratulationScene(this, spriteBatch);
+
             Components.Add(startScene);
             Components.Add(congratulationScene);
-            startScene.Show();
+
             ResetStages();
+            startScene.Show();
         }
 
         private void HideAllScenes()
@@ -59,13 +57,13 @@ namespace GameFromScratch
         private void ResetStages()
         {
             stages.ForEach(s => Components.Remove(s));
-            stages = new List<GameScene>();
+            stages = new List<Stage>();
             var stage1 = new Stage1(this, spriteBatch);
             stages.Add(stage1);
             Components.Add(stage1);
         }
 
-        public void ShowGameOverScene(GameScene mainScene)
+        public void ShowGameOver(GameScene mainScene)
         {
             HideAllScenes();
             gameOverScene = new GameOverScene(this, spriteBatch, mainScene);
@@ -73,19 +71,20 @@ namespace GameFromScratch
             gameOverScene.Show();
         }
 
-        public void ShowStartScene()
+        public void ShowStart()
         {
             HideAllScenes();
             if (gameOverScene != null)
             {
                 Components.Remove(gameOverScene);
-                gameOverScene.Hide();
                 gameOverScene = null;
                 ResetStages();
             }
+
             startScene.Show();
         }
-        public void ShowCongratulationScene()
+
+        public void ShowCongratulation()
         {
             HideAllScenes();
             congratulationScene.Show();
@@ -97,12 +96,14 @@ namespace GameFromScratch
             HideAllScenes();
             if (++stageIndex == stages.Count)
             {
-                ShowCongratulationScene();
+                ShowCongratulation();
                 stageIndex = 0;
                 return;
             }
+
             stages[stageIndex].Show();
         }
+
         public void ShowStage()
         {
             HideAllScenes();
@@ -111,13 +112,15 @@ namespace GameFromScratch
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here
 
             base.Update(gameTime);
             BetterKeyboardState.Update();
+            BetterMouseState.Update();
         }
 
         protected override void Draw(GameTime gameTime)

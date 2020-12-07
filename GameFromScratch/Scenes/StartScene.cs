@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
 {
@@ -19,7 +20,7 @@ namespace GameFromScratch.Scenes
         {
             base.Update(gameTime);
 
-            if (BetterKeyboardState.IsJustDown(Keys.Space))
+            if (BetterKeyboardState.IsJustDown(Keys.Enter))
             {
                 gameMain.ShowStage();
             }
@@ -30,8 +31,8 @@ namespace GameFromScratch.Scenes
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"SATRT GAME{Environment.NewLine}" +
-                $"Press Space to Start";
+            var text = $"START GAME{Environment.NewLine}" +
+                $"Press ENTER to Start";
             var x = Game.GraphicsDevice.Viewport.Width / 2 - font.MeasureString(text).X / 2;
             var y = Game.GraphicsDevice.Viewport.Height / 2 - font.MeasureString(text).Y / 2;
             spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
