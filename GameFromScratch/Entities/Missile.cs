@@ -10,7 +10,7 @@ namespace GameFromScratch.Entities
         public Missile(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
             Size = new Vector2(40, 20);
-            Velocity = new Vector2(100, 0);
+            Velocity = new Vector2(300, 0);
         }
         
         public override void Update(GameTime gameTime)

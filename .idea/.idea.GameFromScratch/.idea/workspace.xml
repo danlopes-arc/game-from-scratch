@@ -14,25 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9d34b0-f091-4c9d-a867-2a25274b0052" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GameFromScratch/Entities/Missile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameFromScratch/Utils/BetterMouseState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameFromScratch/Utils/MouseButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameFromScratch/AsteroidSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameFromScratch/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameFromScratch/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameFromScratch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameFromScratch/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Entities/Asteroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Entities/Asteroid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameFromScratch/Entities/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Entities/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Entities/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Entities/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Extensions/SpriteBatchExtention.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Extensions/SpriteBatchExtention.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/GameMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/GameMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/CongratulationScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/CongratulationScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/GameOverScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/GameOverScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/Stage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/Stage1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/StartScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Utils/BetterKeyboardState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Utils/BetterKeyboardState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFromScratch/Utils/CollisionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Utils/CollisionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +32,8 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/danlo/OneDrive/Documents/Conestoga/term3/PROG2370 Gaming/Final/GameFromScratch/GameFromScratch/GameMain.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB20F9AE-2454-4654-9B55-93ED09A352F5/9c/a05a6dd2/MouseState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB20F9AE-2454-4654-9B55-93ED09A352F5/24/40ecc32d/GameComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/danlo/OneDrive/Documents/Conestoga/term3/PROG2370 Gaming/Final/GameFromScratch/GameFromScratch/GameMain.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -55,15 +43,16 @@
         <option value="$PROJECT_DIR$/GameFromScratch/Scenes/Stage1.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Scenes/GameScene.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage.cs" />
-        <option value="$PROJECT_DIR$/GameFromScratch/Entities/Entity.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Entities/Asteroid.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Entities/Missile.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Utils/MouseButton.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Utils/BetterMouseState.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Entities/Player.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/GameMain.cs" />
-        <option value="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage1.cs" />
         <option value="$PROJECT_DIR$/GameFromScratch/Scenes/StartScene.cs" />
+        <option value="$PROJECT_DIR$/GameFromScratch/AsteroidSpawner.cs" />
+        <option value="$PROJECT_DIR$/GameFromScratch/Entities/Entity.cs" />
+        <option value="$PROJECT_DIR$/GameFromScratch/Scenes/Stages/Stage1.cs" />
       </list>
     </option>
   </component>
@@ -108,8 +97,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607308761461</updated>
-      <workItem from="1607308783120" duration="4363000" />
+      <workItem from="1607308783120" duration="8624000" />
     </task>
+    <task id="LOCAL-00001" summary="Create Missile.cs. Create BetterMouseState.cs">
+      <created>1607313366704</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607313366704</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,32 +127,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Create Missile.cs. Create BetterMouseState.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Missile.cs. Create BetterMouseState.cs" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1607313160318">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1607317110660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607313160318" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1607313160318">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607317110660" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1607317110660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607313160318" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1607313160318">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607317110660" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1607317110660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607313160318" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1607313160318">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607317110660" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1607317110660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607313160318" />
-    <state x="734" y="236" key="RiderGenerateDialog" timestamp="1607310698328">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607317110660" />
+    <state x="734" y="236" key="RiderGenerateDialog" timestamp="1607314739304">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="236" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607310698328" />
+    <state x="734" y="236" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607314739304" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1607310011812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607310011812" />
+    <state x="638" y="119" width="644" height="801" key="find.popup" timestamp="1607316956676">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="638" y="119" width="644" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607316956676" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

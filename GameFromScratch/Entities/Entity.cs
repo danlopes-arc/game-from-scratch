@@ -15,6 +15,8 @@ namespace GameFromScratch.Entities
         public Vector2 Position { get; set; } = Vector2.Zero;
         public Vector2 Velocity { get; set; } = Vector2.Zero;
         public Vector2 Size { get; set; } = Vector2.Zero;
+        public bool Killed { get; private set; }
+        public bool Destroyed { get; private set; }
         public Rectangle Bounds
         {
             get => new Rectangle(Position.ToPoint(), Size.ToPoint());
@@ -43,11 +45,13 @@ namespace GameFromScratch.Entities
 
         public virtual void Destroy()
         {
+            Destroyed = true;
             scene.RemoveEntity(this);
         }
         
         public virtual void Kill()
         {
+            Killed = true;
             Destroy();
         }
     }

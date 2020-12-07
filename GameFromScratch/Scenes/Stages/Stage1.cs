@@ -11,14 +11,22 @@ namespace GameFromScratch.Scenes.Stages
     class Stage1 : Stage
     {
         private Player player;
-        private List<Asteroid> asteroids = new List<Asteroid>();
         private SpriteFont font;
         private int destroyedAsteroids = 0;
+        private int asteroidCount;
+        private AsteroidSpawner asteroidSpawner;
 
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
-
+            
+            asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch)
+            {
+                SpawnRate = 1,
+                SpawnTime = 0.5f
+            };
+            components.Add(asteroidSpawner);
+            
             player = player = new Player(this, spriteBatch)
             {
                 Health = 3
@@ -28,12 +36,24 @@ namespace GameFromScratch.Scenes.Stages
             AddEntity(player);
         }
 
+        public override void AddEntity(Entity entity)
+        {
+            if (entity is Asteroid)
+            {
+                asteroidCount++;
+            }
+            base.AddEntity(entity);
+        }
+
         public override void RemoveEntity(Entity entity)
         {
             if (entity is Asteroid)
             {
-                asteroids.Remove(entity as Asteroid);
-                destroyedAsteroids++;
+                asteroidCount--;
+                if (entity.Killed)
+                {
+                    destroyedAsteroids++;
+                }
             }
             base.RemoveEntity(entity);
         }
@@ -64,7 +84,6 @@ namespace GameFromScratch.Scenes.Stages
                 var height = r.Next(GraphicsDevice.Viewport.Height - (int)asteroid.Size.Y);
                 asteroid.Position = new Vector2(GraphicsDevice.Viewport.Width, height);
                 AddEntity(asteroid);
-                asteroids.Add(asteroid);
             }
         }
 
@@ -73,7 +92,7 @@ namespace GameFromScratch.Scenes.Stages
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"Asteroids: {asteroids.Count} >> Destroyed: {destroyedAsteroids} >> Health: {player.Health}";
+            var text = $"Asteroids: {asteroidCount} >> Destroyed: {destroyedAsteroids} >> Health: {player.Health}";
             spriteBatch.DrawString(font, text, new Vector2(10, 10), Color.White);
 
             spriteBatch.End();
