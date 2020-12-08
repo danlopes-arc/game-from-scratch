@@ -19,14 +19,14 @@ namespace GameFromScratch.Scenes.Stages
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
-            
-            asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch)
+
+            asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f)
             {
-                SpawnRate = 1,
-                SpawnTime = 0.5f
+                Rate = 1
             };
-            components.Add(asteroidSpawner);
             
+            components.Add(asteroidSpawner);
+
             player = player = new Player(this, spriteBatch)
             {
                 Health = 3
@@ -42,6 +42,7 @@ namespace GameFromScratch.Scenes.Stages
             {
                 asteroidCount++;
             }
+
             base.AddEntity(entity);
         }
 
@@ -55,6 +56,7 @@ namespace GameFromScratch.Scenes.Stages
                     destroyedAsteroids++;
                 }
             }
+
             base.RemoveEntity(entity);
         }
 
@@ -81,7 +83,7 @@ namespace GameFromScratch.Scenes.Stages
                     Velocity = new Vector2(-r.Next(100, 150), 0)
                 };
 
-                var height = r.Next(GraphicsDevice.Viewport.Height - (int)asteroid.Size.Y);
+                var height = r.Next(GraphicsDevice.Viewport.Height - (int) asteroid.Size.Y);
                 asteroid.Position = new Vector2(GraphicsDevice.Viewport.Width, height);
                 AddEntity(asteroid);
             }

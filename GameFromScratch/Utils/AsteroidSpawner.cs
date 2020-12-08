@@ -4,7 +4,7 @@ using GameFromScratch.Scenes.Stages;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameFromScratch
+namespace GameFromScratch.Utils
 {
     public class AsteroidSpawner : GameComponent
     {
@@ -12,33 +12,39 @@ namespace GameFromScratch
         private const int NormalMaxVelocity = 150;
         private const int FastMinVelocity = 250;
         private const int FastMaxVelocity = 300;
-        
+
         private Stage stage;
-        private float counter;
         private SpriteBatch spriteBatch;
         private Random r = new Random();
+        private Counter counter;
 
-        public float SpawnTime { get; set; } = 0;
-        public float SpawnRate { get; set; } = 0;
+        public float Delay
+        {
+            get => counter.Delay;
+            set => counter.Delay = value;
+        }
 
-        public AsteroidSpawner(Game game, Stage stage, SpriteBatch spriteBatch) : base(game)
+        public float Rate { get; set; } = 0;
+
+        public AsteroidSpawner(Game game, Stage stage, SpriteBatch spriteBatch, float spawnTime) : base(game)
         {
             this.stage = stage;
             this.spriteBatch = spriteBatch;
+            counter = new Counter(spawnTime);
         }
 
         public override void Update(GameTime gameTime)
         {
-            counter += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (counter < SpawnTime) return;
-            
-            for (int i = 0; i < SpawnRate; i++)
+            if (!counter.Update((float)gameTime.ElapsedGameTime.TotalSeconds)) return;
+
+            for (int i = 0; i < Rate; i++)
             {
                 var xVelocity = -r.Next(NormalMinVelocity, NormalMaxVelocity);
                 if (r.Next(0, 4) == 0)
                 {
                     xVelocity = -r.Next(FastMinVelocity, FastMaxVelocity);
                 }
+
                 var asteroid = new Asteroid(stage, spriteBatch)
                 {
                     Velocity = new Vector2(xVelocity, 0)
@@ -48,8 +54,8 @@ namespace GameFromScratch
                 asteroid.Position = new Vector2(stage.GraphicsDevice.Viewport.Width, height);
                 stage.AddEntity(asteroid);
             }
-
-            counter = 0;
+            
+            counter.Reset();
         }
     }
 }

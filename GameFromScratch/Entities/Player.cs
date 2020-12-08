@@ -11,10 +11,19 @@ namespace GameFromScratch.Entities
     {
         private const float MoveSpeed = 200;
 
+        public float ShotInterval
+        {
+            get => shotTimer.Delay;
+            set => shotTimer.Delay = value;
+        }
+
+        private Counter shotTimer;
+        
         public int Health { get; set; }
         public Player(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
             Size = new Vector2(60, 40);
+            shotTimer = new Counter(.3f);
         }
 
         public override void Update(GameTime gameTime)
@@ -46,13 +55,16 @@ namespace GameFromScratch.Entities
                 Position = new Vector2(Position.X, ScreenSize.Y - Size.Y);
             }
 
-            if (BetterMouseState.IsJustDown(MouseButton.Left))
+            if (shotTimer.Done || shotTimer.Update((float)gameTime.ElapsedGameTime.TotalSeconds))
             {
-                var missile = new Missile(scene, spriteBatch);
-                missile.Position = new Vector2(Position.X + Size.X, Position.Y + Size.Y / 2 - missile.Size.Y / 2);
-                scene.AddEntity(missile);
+                if (BetterMouseState.IsJustDown(MouseButton.Left))
+                {
+                    var missile = new Missile(scene, spriteBatch);
+                    missile.Position = new Vector2(Position.X + Size.X, Position.Y + Size.Y / 2 - missile.Size.Y / 2);
+                    scene.AddEntity(missile);
+                    shotTimer.Reset();
+                }
             }
-
         }
 
         public override void Draw(GameTime gameTime)
