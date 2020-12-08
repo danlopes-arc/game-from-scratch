@@ -8,7 +8,7 @@ using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
 {
-    class StartScene : GameScene
+    public class StartScene : GameScene
     {
         private SpriteFont font;
         public StartScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)

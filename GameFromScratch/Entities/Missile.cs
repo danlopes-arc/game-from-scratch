@@ -21,7 +21,7 @@ namespace GameFromScratch.Entities
 
             if (Position.X > ScreenSize.X)
             {
-                scene.RemoveEntity(this);
+                Destroy();
             }
             // else if (Position.Y + Size.Y > ScreenSize.Y)
             // {

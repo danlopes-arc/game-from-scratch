@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameFromScratch.Scenes.Stages
 {
-    class Stage1 : Stage
+    public class Stage1 : Stage
     {
         private Player player;
         private SpriteFont font;
@@ -27,7 +27,7 @@ namespace GameFromScratch.Scenes.Stages
             
             components.Add(asteroidSpawner);
 
-            player = player = new Player(this, spriteBatch)
+            player = new Player(this, spriteBatch)
             {
                 Health = 3
             };
@@ -74,19 +74,19 @@ namespace GameFromScratch.Scenes.Stages
                 gameMain.ShowNextStage();
             }
 
-            if (BetterKeyboardState.IsJustDown(Keys.A))
-            {
-                var r = new Random();
+            //if (BetterKeyboardState.IsJustDown(Keys.A))
+            //{
+            //    var r = new Random();
 
-                var asteroid = new Asteroid(this, spriteBatch)
-                {
-                    Velocity = new Vector2(-r.Next(100, 150), 0)
-                };
+            //    var asteroid = new Asteroid(this, spriteBatch)
+            //    {
+            //        Velocity = new Vector2(-r.Next(100, 150), 0)
+            //    };
 
-                var height = r.Next(GraphicsDevice.Viewport.Height - (int) asteroid.Size.Y);
-                asteroid.Position = new Vector2(GraphicsDevice.Viewport.Width, height);
-                AddEntity(asteroid);
-            }
+            //    var height = r.Next(GraphicsDevice.Viewport.Height - (int) asteroid.Size.Y);
+            //    asteroid.Position = new Vector2(GraphicsDevice.Viewport.Width, height);
+            //    AddEntity(asteroid);
+            //}
         }
 
         public override void Draw(GameTime gameTime)

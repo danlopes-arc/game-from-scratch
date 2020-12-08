@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameFromScratch.Extensions
 {
-    static class SpriteBatchExtension
+    public static class SpriteBatchExtension
     {
         public static void DrawFillRectangle(this SpriteBatch spriteBatch, GraphicsDevice graphicsDevice, Rectangle rectangle, Color color)
         {

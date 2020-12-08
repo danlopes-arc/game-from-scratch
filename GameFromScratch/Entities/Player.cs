@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameFromScratch.Entities
 {
-    class Player : Entity
+    public class Player : Entity
     {
         private const float MoveSpeed = 200;
 

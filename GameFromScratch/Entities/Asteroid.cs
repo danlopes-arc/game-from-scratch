@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameFromScratch.Entities
 {
-    class Asteroid : Entity
+    public class Asteroid : Entity
     {
         public Asteroid(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
@@ -42,7 +42,7 @@ namespace GameFromScratch.Entities
                 var player = other as Player;
                 player.Health--;
 
-                scene.RemoveEntity(this);
+                Destroy();
             }
         }
     }
