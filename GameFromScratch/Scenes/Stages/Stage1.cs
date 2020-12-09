@@ -12,8 +12,9 @@ namespace GameFromScratch.Scenes.Stages
     {
         private Player player;
         private SpriteFont font;
-        private int destroyedAsteroids = 0;
+        private int destroyedAsteroids;
         private int asteroidCount;
+        private int missedAsteroids;
         private AsteroidSpawner asteroidSpawner;
         private float stageTime = 30;
         private Counter stageCounter;
@@ -58,6 +59,10 @@ namespace GameFromScratch.Scenes.Stages
                 if (entity.Killed)
                 {
                     destroyedAsteroids++;
+                }
+                else
+                {
+                    missedAsteroids++;
                 }
             }
 
@@ -106,10 +111,11 @@ namespace GameFromScratch.Scenes.Stages
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"Asteroids: {asteroidCount}{Environment.NewLine}" +
-                       $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
-                       $"Health: {player.Health}{Environment.NewLine}" +
-                       $"Time: {(int)stageCounter.Remaining}s";
+            var text =
+                $"Health: {player.Health}{Environment.NewLine}" +
+                $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
+                $"Missed: {missedAsteroids}{Environment.NewLine}" +
+                $"Time: {(int) stageCounter.Remaining}s";
             var x = ScreenSize.X - 180;
             spriteBatch.DrawString(font, text, new Vector2(x, 10), Color.White);
 
