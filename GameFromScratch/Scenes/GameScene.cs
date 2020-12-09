@@ -16,7 +16,7 @@ namespace GameFromScratch.Scenes
         protected CollisionManager collisionManager = new CollisionManager();
         protected GameMain gameMain;
         public string Title { get; set; }
-        public bool InputEnabled { get; set; }
+        public bool InputEnabled { get; set; } = true;
 
         public virtual Rectangle Bounds => new Rectangle(0,0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         
