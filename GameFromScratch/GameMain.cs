@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using GameFromScratch.Scenes.OverlayScenes;
 using GameFromScratch.Scenes.Stages;
 using GameFromScratch.Utils;
 

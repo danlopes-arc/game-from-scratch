@@ -1,21 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using GameFromScratch.Utils;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using GameFromScratch.Utils;
 
-namespace GameFromScratch.Scenes
+namespace GameFromScratch.Scenes.OverlayScenes
 {
-    public class GameOverScene : GameScene
+    public class GameOverScene : OverlayScene
     {
-        private GameScene mainScene;
         private SpriteFont font;
 
-        public GameOverScene(GameMain game, SpriteBatch spriteBatch, GameScene mainScene) : base(game, spriteBatch)
+        public GameOverScene(GameMain game, SpriteBatch spriteBatch, GameScene mainScene) : base(game, spriteBatch, mainScene)
         {
-            this.mainScene = mainScene;
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
         }
 
@@ -33,8 +29,6 @@ namespace GameFromScratch.Scenes
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-
-            mainScene.Draw(gameTime);
 
             spriteBatch.Begin();
             var text = $"GAME OVER{Environment.NewLine}" +
