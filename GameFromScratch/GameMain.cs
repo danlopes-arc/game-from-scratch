@@ -14,10 +14,13 @@ namespace GameFromScratch
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        
         private List<Stage> stages = new List<Stage>();
-        private GameOverScene gameOverScene;
+        
         private StartScene startScene;
         private CongratulationScene congratulationScene;
+        private GameOverScene gameOverScene;
+        
         private int stageIndex;
 
         public GameMain()
@@ -35,9 +38,12 @@ namespace GameFromScratch
 
             startScene = new StartScene(this, spriteBatch);
             congratulationScene = new CongratulationScene(this, spriteBatch);
+            
+            gameOverScene = new GameOverScene(this, spriteBatch);
 
             Components.Add(startScene);
             Components.Add(congratulationScene);
+            Components.Add(gameOverScene);
 
             ResetStages();
             startScene.Show();
@@ -67,15 +73,18 @@ namespace GameFromScratch
         public void ShowGameOver(GameScene mainScene)
         {
             HideAllScenes();
-            gameOverScene = new GameOverScene(this, spriteBatch, mainScene);
-            Components.Add(gameOverScene);
+            ResetStages();
+            gameOverScene.MainScene = mainScene;
             gameOverScene.Show();
         }
         
         public void Pause(GameScene mainScene)
         {
             HideAllScenes();
-            var pauseScene = new PauseScene(this, spriteBatch, mainScene);
+            var pauseScene = new PauseScene(this, spriteBatch, mainScene)
+            {
+                MainScene = mainScene
+            };
             Components.Add(pauseScene);
             pauseScene.Show();
         }
@@ -90,13 +99,6 @@ namespace GameFromScratch
         public void ShowStart()
         {
             HideAllScenes();
-            if (gameOverScene != null)
-            {
-                Components.Remove(gameOverScene);
-                gameOverScene = null;
-                ResetStages();
-            }
-
             startScene.Show();
         }
 

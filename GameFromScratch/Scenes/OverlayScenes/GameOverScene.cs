@@ -11,7 +11,7 @@ namespace GameFromScratch.Scenes.OverlayScenes
     {
         private SpriteFont font;
 
-        public GameOverScene(GameMain game, SpriteBatch spriteBatch, GameScene mainScene) : base(game, spriteBatch, mainScene)
+        public GameOverScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
         }

@@ -5,17 +5,16 @@ namespace GameFromScratch.Scenes.OverlayScenes
 {
     public abstract class OverlayScene : GameScene
     {
-        protected GameScene mainScene;
+        public GameScene MainScene { get; set; }
         
-        public OverlayScene(GameMain game, SpriteBatch spriteBatch, GameScene mainScene) : base(game, spriteBatch)
+        public OverlayScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
-            this.mainScene = mainScene;
         }
         
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-            mainScene.Draw(gameTime);
+            MainScene?.Draw(gameTime);
         }
     }
 }
