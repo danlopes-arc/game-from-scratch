@@ -20,7 +20,7 @@ namespace GameFromScratch.Scenes
         {
             base.Update(gameTime);
 
-            if (BetterKeyboardState.IsJustDown(Keys.Enter))
+            if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Enter))
             {
                 gameMain.ShowStage();
             }

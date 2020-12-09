@@ -16,6 +16,8 @@ namespace GameFromScratch.Scenes
         protected CollisionManager collisionManager = new CollisionManager();
         protected GameMain gameMain;
 
+        public bool InputEnabled { get; set; }
+
         public virtual Rectangle Bounds => new Rectangle(0,0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         
         public Point ScreenSize {

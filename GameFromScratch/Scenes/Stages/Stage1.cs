@@ -37,7 +37,7 @@ namespace GameFromScratch.Scenes.Stages
             {
                 Health = 3
             };
-            player.Position = new Vector2(10, GraphicsDevice.Viewport.Height / 2 - player.Size.Y / 2);
+            player.Position = new Vector2(10, GraphicsDevice.Viewport.Height / 2f - player.Size.Y / 2);
 
             AddEntity(player);
 

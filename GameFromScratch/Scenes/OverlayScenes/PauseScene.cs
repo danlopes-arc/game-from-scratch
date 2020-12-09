@@ -21,7 +21,8 @@ namespace GameFromScratch.Scenes.OverlayScenes
         {
             base.Update(gameTime);
 
-            if (BetterKeyboardState.IsJustDown(Keys.Enter) || BetterKeyboardState.IsJustDown(Keys.Escape))
+            if (InputEnabled && (BetterKeyboardState.IsJustDown(Keys.Enter) ||
+                                 BetterKeyboardState.IsJustDown(Keys.Escape)))
             {
                 gameMain.Resume(mainScene, this);
             }

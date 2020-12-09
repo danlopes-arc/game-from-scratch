@@ -20,7 +20,7 @@ namespace GameFromScratch.Scenes.OverlayScenes
         {
             base.Update(gameTime);
 
-            if (BetterKeyboardState.IsJustDown(Keys.Enter))
+            if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Enter))
             {
                 gameMain.ShowStart();
             }

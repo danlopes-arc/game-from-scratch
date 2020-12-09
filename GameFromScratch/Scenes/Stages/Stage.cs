@@ -24,7 +24,7 @@ namespace GameFromScratch.Scenes.Stages
 
         public override void Update(GameTime gameTime)
         {
-            if (BetterKeyboardState.IsJustDown(Keys.Escape))
+            if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Escape))
             {
                 gameMain.Pause(this);
             }
