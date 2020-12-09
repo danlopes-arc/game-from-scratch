@@ -33,8 +33,8 @@ namespace GameFromScratch.Scenes
             spriteBatch.Begin();
             var text = $"START GAME{Environment.NewLine}" +
                 $"Press ENTER to Start";
-            var x = Game.GraphicsDevice.Viewport.Width / 2 - font.MeasureString(text).X / 2;
-            var y = Game.GraphicsDevice.Viewport.Height / 2 - font.MeasureString(text).Y / 2;
+            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(text).X / 2;
+            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(text).Y / 2;
             spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
 
             spriteBatch.End();

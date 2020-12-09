@@ -36,8 +36,8 @@ namespace GameFromScratch.Scenes.OverlayScenes
             spriteBatch.DrawFillRectangle(GraphicsDevice, Bounds, Color.Black * .5f);
             var text = $"PAUSED{Environment.NewLine}" +
                        $"Press ENTER or ESC to resume";
-            var x = Game.GraphicsDevice.Viewport.Width / 2 - font.MeasureString(text).X / 2;
-            var y = Game.GraphicsDevice.Viewport.Height / 2 - font.MeasureString(text).Y / 2;
+            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(text).X / 2;
+            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(text).Y / 2;
             spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
 
             spriteBatch.End();
