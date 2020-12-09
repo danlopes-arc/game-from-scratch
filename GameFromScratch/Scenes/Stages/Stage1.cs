@@ -85,6 +85,9 @@ namespace GameFromScratch.Scenes.Stages
                 return;
             }
 
+            asteroidSpawner.Delay = 2 - stageCounter.Current / stageCounter.Total * 1.5f;
+            asteroidSpawner.Rate = 1 + (int)(stageCounter.Current / stageCounter.Total * 3);
+
             // if (destroyedAsteroids == 10)
             // {
             //     gameMain.ShowNextStage();

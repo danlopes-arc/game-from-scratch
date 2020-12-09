@@ -24,7 +24,7 @@ namespace GameFromScratch.Utils
             set => counter.Total = value;
         }
 
-        public float Rate { get; set; } = 0;
+        public int Rate { get; set; } = 0;
 
         public AsteroidSpawner(Game game, Stage stage, SpriteBatch spriteBatch, float spawnTime) : base(game)
         {
