@@ -23,10 +23,7 @@ namespace GameFromScratch.Scenes.Stages
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
 
-            asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f)
-            {
-                Rate = 1
-            };
+            asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f);
 
             components.Add(asteroidSpawner);
 
@@ -85,8 +82,10 @@ namespace GameFromScratch.Scenes.Stages
                 return;
             }
 
-            asteroidSpawner.Delay = 2 - stageCounter.Current / stageCounter.Total * 1.5f;
-            asteroidSpawner.Rate = 1 + (int)(stageCounter.Current / stageCounter.Total * 3);
+            var percentLevel = stageCounter.Current / stageCounter.Total;
+            asteroidSpawner.Delay = 2 - percentLevel * 1.5f;
+            asteroidSpawner.Rate = 1 + (int)(percentLevel * 3);
+            asteroidSpawner.BaseVelocity = 100 + percentLevel * 100;
 
             // if (destroyedAsteroids == 10)
             // {

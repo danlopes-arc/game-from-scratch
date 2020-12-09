@@ -8,10 +8,10 @@ namespace GameFromScratch.Utils
 {
     public class AsteroidSpawner : GameComponent
     {
-        private const int NormalMinVelocity = 100;
-        private const int NormalMaxVelocity = 150;
-        private const int FastMinVelocity = 250;
-        private const int FastMaxVelocity = 300;
+        private const float NormalMinVelocity = .8f;
+        private const float NormalMaxVelocity = 1.2f;
+        private const float FastMinVelocity = 1.6f;
+        private const float FastMaxVelocity = 2;
 
         private Stage stage;
         private SpriteBatch spriteBatch;
@@ -24,8 +24,9 @@ namespace GameFromScratch.Utils
             set => counter.Total = value;
         }
 
-        public int Rate { get; set; } = 0;
-
+        public int Rate { get; set; }
+        public float BaseVelocity { get; set; }
+        
         public AsteroidSpawner(Game game, Stage stage, SpriteBatch spriteBatch, float spawnTime) : base(game)
         {
             this.stage = stage;
@@ -39,10 +40,12 @@ namespace GameFromScratch.Utils
 
             for (int i = 0; i < Rate; i++)
             {
-                var xVelocity = -r.Next(NormalMinVelocity, NormalMaxVelocity);
+                var xVelocity = -r.Next((int)(BaseVelocity * NormalMinVelocity), (int) (BaseVelocity *
+                    NormalMinVelocity));
                 if (r.Next(0, 4) == 0)
                 {
-                    xVelocity = -r.Next(FastMinVelocity, FastMaxVelocity);
+                    xVelocity = -r.Next((int)(BaseVelocity * FastMinVelocity), (int) (BaseVelocity *
+                        FastMinVelocity));
                 }
 
                 var asteroid = new Asteroid(stage, spriteBatch)
