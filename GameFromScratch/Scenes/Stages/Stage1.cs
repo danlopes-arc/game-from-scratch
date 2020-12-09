@@ -70,22 +70,29 @@ namespace GameFromScratch.Scenes.Stages
         {
             base.Update(gameTime);
 
-            if (stageCounter.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
-            {
-                gameMain.ShowNextStage();
-                return;
-            }
-
             if (player.Health == 0)
             {
                 gameMain.ShowGameOver(this);
                 return;
             }
+            
+            if (stageCounter.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
+            {
+                asteroidSpawner.Rate = 0;
+                if (asteroidCount == 0)
+                {
+                    gameMain.ShowNextStage();
+                    return;
+                }
+            }
 
-            var percentLevel = stageCounter.Current / stageCounter.Total;
-            asteroidSpawner.Delay = 2 - percentLevel * 1.5f;
-            asteroidSpawner.Rate = 1 + (int)(percentLevel * 3);
-            asteroidSpawner.BaseVelocity = 100 + percentLevel * 100;
+            if (!stageCounter.Done)
+            {
+                var percentLevel = stageCounter.Current / stageCounter.Total;
+                asteroidSpawner.Delay = 2 - percentLevel * 1.5f;
+                asteroidSpawner.Rate = 1 + (int)(percentLevel * 3);
+                asteroidSpawner.BaseVelocity = 100 + percentLevel * 100;
+            }
 
             // if (destroyedAsteroids == 10)
             // {

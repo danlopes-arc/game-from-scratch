@@ -41,11 +41,11 @@ namespace GameFromScratch.Utils
             for (int i = 0; i < Rate; i++)
             {
                 var xVelocity = -r.Next((int)(BaseVelocity * NormalMinVelocity), (int) (BaseVelocity *
-                    NormalMinVelocity));
+                    NormalMaxVelocity));
                 if (r.Next(0, 4) == 0)
                 {
                     xVelocity = -r.Next((int)(BaseVelocity * FastMinVelocity), (int) (BaseVelocity *
-                        FastMinVelocity));
+                        FastMaxVelocity));
                 }
 
                 var asteroid = new Asteroid(stage, spriteBatch)
