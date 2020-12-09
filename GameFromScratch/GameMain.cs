@@ -71,6 +71,21 @@ namespace GameFromScratch
             Components.Add(gameOverScene);
             gameOverScene.Show();
         }
+        
+        public void Pause(GameScene mainScene)
+        {
+            HideAllScenes();
+            var pauseScene = new PauseScene(this, spriteBatch, mainScene);
+            Components.Add(pauseScene);
+            pauseScene.Show();
+        }
+        
+        public void Resume(GameScene mainScene, PauseScene pauseScene)
+        {
+            HideAllScenes();
+            Components.Remove(pauseScene);
+            mainScene.Show();
+        }
 
         public void ShowStart()
         {
@@ -113,10 +128,6 @@ namespace GameFromScratch
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             // TODO: Add your update logic here
 
             base.Update(gameTime);

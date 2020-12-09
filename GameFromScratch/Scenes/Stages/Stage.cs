@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using GameFromScratch.Utils;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameFromScratch.Scenes.Stages
 {
@@ -16,6 +19,15 @@ namespace GameFromScratch.Scenes.Stages
         public virtual void Resume()
         {
             Enabled = false;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (BetterKeyboardState.IsJustDown(Keys.Escape))
+            {
+                gameMain.Pause(this);
+            }
+            base.Update(gameTime);
         }
     }
 }
