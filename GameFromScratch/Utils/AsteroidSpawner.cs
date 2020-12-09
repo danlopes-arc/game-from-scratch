@@ -26,7 +26,7 @@ namespace GameFromScratch.Utils
 
         public int Rate { get; set; }
         public float BaseVelocity { get; set; }
-        
+
         public AsteroidSpawner(Game game, Stage stage, SpriteBatch spriteBatch, float spawnTime) : base(game)
         {
             this.stage = stage;
@@ -36,15 +36,15 @@ namespace GameFromScratch.Utils
 
         public override void Update(GameTime gameTime)
         {
-            if (!counter.Update((float)gameTime.ElapsedGameTime.TotalSeconds)) return;
+            if (!counter.Update((float) gameTime.ElapsedGameTime.TotalSeconds)) return;
 
             for (int i = 0; i < Rate; i++)
             {
-                var xVelocity = -r.Next((int)(BaseVelocity * NormalMinVelocity), (int) (BaseVelocity *
+                var xVelocity = -r.Next((int) (BaseVelocity * NormalMinVelocity), (int) (BaseVelocity *
                     NormalMaxVelocity));
                 if (r.Next(0, 4) == 0)
                 {
-                    xVelocity = -r.Next((int)(BaseVelocity * FastMinVelocity), (int) (BaseVelocity *
+                    xVelocity = -r.Next((int) (BaseVelocity * FastMinVelocity), (int) (BaseVelocity *
                         FastMaxVelocity));
                 }
 
@@ -53,11 +53,11 @@ namespace GameFromScratch.Utils
                     Velocity = new Vector2(xVelocity, 0)
                 };
 
-                var height = r.Next(stage.GraphicsDevice.Viewport.Height - (int) asteroid.Size.Y);
+                var height = r.Next(stage.Bounds.Top ,stage.Bounds.Bottom - (int) asteroid.Size.Y);
                 asteroid.Position = new Vector2(stage.GraphicsDevice.Viewport.Width, height);
                 stage.AddEntity(asteroid);
             }
-            
+
             counter.Reset();
         }
     }

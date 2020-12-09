@@ -46,13 +46,13 @@ namespace GameFromScratch.Entities
 
             Position = new Vector2(Position.X, Mouse.GetState().Y - Size.Y / 2);
 
-            if (Position.Y < 0)
+            if (Position.Y < scene.Bounds.Top)
             {
-                Position = new Vector2(Position.X, 0);
+                Position = new Vector2(Position.X, scene.Bounds.Top);
             }
-            else if (Position.Y + Size.Y > ScreenSize.Y)
+            else if (Position.Y + Size.Y > scene.Bounds.Bottom)
             {
-                Position = new Vector2(Position.X, ScreenSize.Y - Size.Y);
+                Position = new Vector2(Position.X, scene.Bounds.Bottom - Size.Y);
             }
 
             if (shotTimer.Done || shotTimer.Update((float)gameTime.ElapsedGameTime.TotalSeconds))

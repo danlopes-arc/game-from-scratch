@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameFromScratch.Components;
 using GameFromScratch.Entities;
 using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
@@ -13,11 +14,15 @@ namespace GameFromScratch.Scenes.Stages
         private Player player;
         private SpriteFont font;
         private int destroyedAsteroids;
-        private int asteroidCount;
         private int missedAsteroids;
+        private int asteroidCount;
         private AsteroidSpawner asteroidSpawner;
         private float stageTime = 30;
         private Counter stageCounter;
+        private InfoBar infoBar;
+
+        public override Rectangle Bounds => new Rectangle(0, InfoBar.Height, GraphicsDevice.Viewport.Width,
+            GraphicsDevice.Viewport.Height - InfoBar.Height);
 
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
@@ -36,6 +41,8 @@ namespace GameFromScratch.Scenes.Stages
             AddEntity(player);
 
             stageCounter = new Counter(stageTime);
+            infoBar = new InfoBar(game, spriteBatch);
+            components.Add(infoBar);
         }
 
         public override void AddEntity(Entity entity)
@@ -75,7 +82,7 @@ namespace GameFromScratch.Scenes.Stages
                 gameMain.ShowGameOver(this);
                 return;
             }
-            
+
             if (stageCounter.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
             {
                 asteroidSpawner.Rate = 0;
@@ -90,9 +97,14 @@ namespace GameFromScratch.Scenes.Stages
             {
                 var percentLevel = stageCounter.Current / stageCounter.Total;
                 asteroidSpawner.Delay = 2 - percentLevel * 1.5f;
-                asteroidSpawner.Rate = 1 + (int)(percentLevel * 3);
+                asteroidSpawner.Rate = 1 + (int) (percentLevel * 3);
                 asteroidSpawner.BaseVelocity = 100 + percentLevel * 100;
             }
+
+            infoBar.Destroyed = destroyedAsteroids;
+            infoBar.Missed = missedAsteroids;
+            infoBar.Health = player.Health;
+            infoBar.Time = (int) stageCounter.Remaining;
 
             // if (destroyedAsteroids == 10)
             // {
@@ -119,16 +131,16 @@ namespace GameFromScratch.Scenes.Stages
         {
             base.Draw(gameTime);
 
-            spriteBatch.Begin();
-            var text =
-                $"Health: {player.Health}{Environment.NewLine}" +
-                $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
-                $"Missed: {missedAsteroids}{Environment.NewLine}" +
-                $"Time: {(int) stageCounter.Remaining}s";
-            var x = ScreenSize.X - 180;
-            spriteBatch.DrawString(font, text, new Vector2(x, 10), Color.White);
+            // spriteBatch.Begin();
+            // var text =
+            //     $"Health: {player.Health}{Environment.NewLine}" +
+            //     $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
+            //     $"Missed: {missedAsteroids}{Environment.NewLine}" +
+            //     $"Time: {(int) stageCounter.Remaining}s";
+            // var x = ScreenSize.X - 180;
+            // spriteBatch.DrawString(font, text, new Vector2(x, 10), Color.White);
 
-            spriteBatch.End();
+            // spriteBatch.End();
         }
     }
 }

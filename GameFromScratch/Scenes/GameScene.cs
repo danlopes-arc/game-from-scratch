@@ -15,6 +15,8 @@ namespace GameFromScratch.Scenes
         protected List<GameComponent> components = new List<GameComponent>();
         protected CollisionManager collisionManager = new CollisionManager();
         protected GameMain gameMain;
+
+        public virtual Rectangle Bounds => new Rectangle(0,0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         
         public Point ScreenSize {
             get => new Point(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
