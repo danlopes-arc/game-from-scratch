@@ -57,7 +57,7 @@ namespace GameFromScratch.Entities
 
             if (shotTimer.Done || shotTimer.Update((float)gameTime.ElapsedGameTime.TotalSeconds))
             {
-                if (BetterMouseState.IsJustDown(MouseButton.Left))
+                if (BetterMouseState.IsDown(MouseButton.Left))
                 {
                     var missile = new Missile(scene, spriteBatch);
                     missile.Position = new Vector2(Position.X + Size.X, Position.Y + Size.Y / 2 - missile.Size.Y / 2);

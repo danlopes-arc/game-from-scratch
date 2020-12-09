@@ -21,19 +21,6 @@ namespace GameFromScratch.Utils
             };
         }
 
-        public static bool IsUp(MouseButton button)
-        {
-            return button switch
-            {
-                MouseButton.Left => Current.LeftButton == ButtonState.Released,
-                MouseButton.Right => Current.RightButton == ButtonState.Released,
-                MouseButton.Middle => Current.MiddleButton == ButtonState.Released,
-                MouseButton.X1 => Current.XButton1 == ButtonState.Released,
-                MouseButton.X2 => Current.XButton2 == ButtonState.Released,
-                _ => throw new ArgumentOutOfRangeException(nameof(button), button, null)
-            };
-        }
-
         public static bool IsJustDown(MouseButton button)
         {
             return button switch
