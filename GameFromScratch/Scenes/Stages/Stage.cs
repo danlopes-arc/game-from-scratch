@@ -7,6 +7,7 @@ namespace GameFromScratch.Scenes.Stages
 {
     public abstract class Stage : GameScene
     {
+        public string Title { get; set; }
         public Stage(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
         }

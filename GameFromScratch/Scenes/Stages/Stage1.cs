@@ -27,6 +27,7 @@ namespace GameFromScratch.Scenes.Stages
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
+            Title = "Stage 1";
 
             asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f);
 
