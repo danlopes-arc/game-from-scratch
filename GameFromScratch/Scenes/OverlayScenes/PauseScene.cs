@@ -11,7 +11,7 @@ namespace GameFromScratch.Scenes.OverlayScenes
     {
         private SpriteFont font;
 
-        public PauseScene(GameMain game, SpriteBatch spriteBatch, GameScene mainScene) : base(game, spriteBatch)
+        public PauseScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
         }
@@ -23,7 +23,7 @@ namespace GameFromScratch.Scenes.OverlayScenes
             if (InputEnabled && (BetterKeyboardState.IsJustDown(Keys.Enter) ||
                                  BetterKeyboardState.IsJustDown(Keys.Escape)))
             {
-                gameMain.Resume(MainScene, this);
+                gameMain.Resume();
             }
         }
 

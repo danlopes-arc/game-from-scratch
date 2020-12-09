@@ -19,7 +19,11 @@ namespace GameFromScratch
         
         private StartScene startScene;
         private CongratulationScene congratulationScene;
+        
         private GameOverScene gameOverScene;
+        private PauseScene pauseScene;
+
+        private GameScene pausedScene;
         
         private int stageIndex;
 
@@ -40,10 +44,13 @@ namespace GameFromScratch
             congratulationScene = new CongratulationScene(this, spriteBatch);
             
             gameOverScene = new GameOverScene(this, spriteBatch);
+            pauseScene = new PauseScene(this, spriteBatch);
 
             Components.Add(startScene);
             Components.Add(congratulationScene);
+            
             Components.Add(gameOverScene);
+            Components.Add(pauseScene);
 
             ResetStages();
             startScene.Show();
@@ -81,19 +88,17 @@ namespace GameFromScratch
         public void Pause(GameScene mainScene)
         {
             HideAllScenes();
-            var pauseScene = new PauseScene(this, spriteBatch, mainScene)
-            {
-                MainScene = mainScene
-            };
-            Components.Add(pauseScene);
+            pauseScene.MainScene = mainScene;
+            pausedScene = mainScene;
             pauseScene.Show();
         }
         
-        public void Resume(GameScene mainScene, PauseScene pauseScene)
+        public void Resume()
         {
             HideAllScenes();
-            Components.Remove(pauseScene);
-            mainScene.Show();
+            pauseScene.MainScene = null;
+            pausedScene.Show();
+            pausedScene = null;
         }
 
         public void ShowStart()
