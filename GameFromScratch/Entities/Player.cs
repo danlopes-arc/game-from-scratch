@@ -13,8 +13,8 @@ namespace GameFromScratch.Entities
 
         public float ShotInterval
         {
-            get => shotTimer.Delay;
-            set => shotTimer.Delay = value;
+            get => shotTimer.Total;
+            set => shotTimer.Total = value;
         }
 
         private Counter shotTimer;

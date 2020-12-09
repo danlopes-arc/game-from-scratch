@@ -15,6 +15,10 @@ namespace GameFromScratch.Scenes
         protected List<GameComponent> components = new List<GameComponent>();
         protected CollisionManager collisionManager = new CollisionManager();
         protected GameMain gameMain;
+        
+        public Point ScreenSize {
+            get => new Point(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
+        }
 
         public GameScene(GameMain game, SpriteBatch spriteBatch) : base(game)
         {

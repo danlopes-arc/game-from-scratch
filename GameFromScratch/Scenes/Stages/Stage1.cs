@@ -15,6 +15,8 @@ namespace GameFromScratch.Scenes.Stages
         private int destroyedAsteroids = 0;
         private int asteroidCount;
         private AsteroidSpawner asteroidSpawner;
+        private float stageTime = 30;
+        private Counter stageCounter;
 
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
@@ -24,7 +26,7 @@ namespace GameFromScratch.Scenes.Stages
             {
                 Rate = 1
             };
-            
+
             components.Add(asteroidSpawner);
 
             player = new Player(this, spriteBatch)
@@ -34,6 +36,8 @@ namespace GameFromScratch.Scenes.Stages
             player.Position = new Vector2(10, GraphicsDevice.Viewport.Height / 2 - player.Size.Y / 2);
 
             AddEntity(player);
+
+            stageCounter = new Counter(stageTime);
         }
 
         public override void AddEntity(Entity entity)
@@ -64,15 +68,23 @@ namespace GameFromScratch.Scenes.Stages
         {
             base.Update(gameTime);
 
+            if (stageCounter.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
+            {
+                gameMain.ShowNextStage();
+                return;
+            }
+
             if (player.Health == 0)
             {
                 gameMain.ShowGameOver(this);
+                return;
             }
 
-            if (destroyedAsteroids == 10)
-            {
-                gameMain.ShowNextStage();
-            }
+            // if (destroyedAsteroids == 10)
+            // {
+            //     gameMain.ShowNextStage();
+            //     return;
+            // }
 
             //if (BetterKeyboardState.IsJustDown(Keys.A))
             //{
@@ -94,8 +106,12 @@ namespace GameFromScratch.Scenes.Stages
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"Asteroids: {asteroidCount} >> Destroyed: {destroyedAsteroids} >> Health: {player.Health}";
-            spriteBatch.DrawString(font, text, new Vector2(10, 10), Color.White);
+            var text = $"Asteroids: {asteroidCount}{Environment.NewLine}" +
+                       $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
+                       $"Health: {player.Health}{Environment.NewLine}" +
+                       $"Time: {(int)stageCounter.Remaining}s";
+            var x = ScreenSize.X - 180;
+            spriteBatch.DrawString(font, text, new Vector2(x, 10), Color.White);
 
             spriteBatch.End();
         }

@@ -20,8 +20,8 @@ namespace GameFromScratch.Utils
 
         public float Delay
         {
-            get => counter.Delay;
-            set => counter.Delay = value;
+            get => counter.Total;
+            set => counter.Total = value;
         }
 
         public float Rate { get; set; } = 0;

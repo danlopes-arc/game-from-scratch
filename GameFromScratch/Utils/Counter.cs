@@ -2,20 +2,23 @@
 {
     public class Counter
     {
-        private float count;
-        public float Delay { get; set; }
+        public float Current { get; private set; }
+        public float Total { get; set; }
+
+        public float Remaining => Total - Current;
+
         public bool Done { get; private set; }
-        
-        public Counter(float delay)
+
+        public Counter(float total)
         {
-            Delay = delay;
+            Total = total;
         }
 
         public bool Update(float deltaTime)
         {
             if (Done) return true;
-            count += deltaTime;
-            if (count < Delay) return false;
+            Current += deltaTime;
+            if (Current < Total) return false;
 
             Done = true;
             return true;
@@ -24,7 +27,7 @@
         public void Reset()
         {
             Done = false;
-            count = 0;
+            Current = 0;
         }
     }
 }
