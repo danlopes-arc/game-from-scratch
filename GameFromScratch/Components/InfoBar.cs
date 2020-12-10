@@ -45,10 +45,10 @@ namespace GameFromScratch.Components
             spriteBatch.DrawString(font, text, new Vector2(GraphicsDevice.Viewport.Width / 2f - pos.X / 2, y), Color.White);
 
             var timeText = Time.ToString().PadLeft(2, '0');
-            text = $"Time {timeText}s";
+            text = $"Time: {timeText}s";
             pos = font.MeasureString(text);
             spriteBatch.DrawString(font, text, new Vector2(GraphicsDevice.Viewport.Width - pos.X - 10, y), Color.White);
-            
+
             spriteBatch.End();
         }
     }
