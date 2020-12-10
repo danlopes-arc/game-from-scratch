@@ -7,6 +7,7 @@ namespace GameFromScratch.Scenes.Stages
 {
     public abstract class Stage : GameScene
     {
+        public virtual int Score { get; }
         public Stage(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
         }

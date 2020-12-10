@@ -21,6 +21,8 @@ namespace GameFromScratch.Scenes.Stages
         private Counter stageCounter;
         private InfoBar infoBar;
 
+        public override int Score => destroyedAsteroids * 100 - missedAsteroids * 50;
+
         public override Rectangle Bounds => new Rectangle(0, InfoBar.Height, GraphicsDevice.Viewport.Width,
             GraphicsDevice.Viewport.Height - InfoBar.Height);
 
@@ -89,7 +91,7 @@ namespace GameFromScratch.Scenes.Stages
                 asteroidSpawner.Rate = 0;
                 if (asteroidCount == 0)
                 {
-                    gameMain.ShowNextStage();
+                    gameMain.ShowSummary(this);
                     return;
                 }
             }

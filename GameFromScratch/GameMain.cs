@@ -22,10 +22,12 @@ namespace GameFromScratch
         
         private GameOverScene gameOverScene;
         private PauseScene pauseScene;
+        private SummaryScene summaryScene;
 
         private GameScene pausedScene;
         
         private int stageIndex;
+        private int totalScore;
 
         public GameMain()
         {
@@ -45,12 +47,14 @@ namespace GameFromScratch
             
             gameOverScene = new GameOverScene(this, spriteBatch);
             pauseScene = new PauseScene(this, spriteBatch);
+            summaryScene = new SummaryScene(this, spriteBatch);
 
             Components.Add(startScene);
             Components.Add(congratulationScene);
             
             Components.Add(gameOverScene);
             Components.Add(pauseScene);
+            Components.Add(summaryScene);
 
             ResetStages();
             startScene.Show();
@@ -75,6 +79,7 @@ namespace GameFromScratch
             var stage1 = new Stage1(this, spriteBatch);
             stages.Add(stage1);
             Components.Add(stage1);
+            totalScore = 0;
         }
 
         public void ShowGameOver(GameScene mainScene)
@@ -131,6 +136,16 @@ namespace GameFromScratch
         {
             HideAllScenes();
             stages[stageIndex].Show();
+        }
+
+        public void ShowSummary(Stage stage)
+        {
+            totalScore += stage.Score;
+            summaryScene.StageScore = stage.Score;
+            summaryScene.TotalScore = totalScore;
+            summaryScene.MainScene = stage;
+            HideAllScenes();
+            summaryScene.Show();
         }
 
         protected override void Update(GameTime gameTime)
