@@ -31,9 +31,18 @@ namespace GameFromScratch.Scenes
         {
             base.Update(gameTime);
 
-            if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Enter))
+            if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Enter) ||
+                BetterMouseState.IsJustDown(MouseButton.Left) && menu.Intersects(BetterMouseState.Current.Position))
             {
-                gameMain.ShowStage();
+                switch (menu.Index)
+                {
+                    case 0:
+                        gameMain.ShowStage();
+                        break;
+                    case 3:
+                        Game.Exit();
+                        break;
+                }
             }
         }
 

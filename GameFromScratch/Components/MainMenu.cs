@@ -36,6 +36,16 @@ namespace GameFromScratch.Components
             }
         }
 
+        public int Height
+        {
+            get => items.Count * font.LineSpacing;
+        }
+
+        public Rectangle Bounds
+        {
+            get => new Rectangle(position.ToPoint(), new Point(Width, Height));
+        }
+
         public MainMenu(SpriteBatch spriteBatch, Game game, List<string> items, Vector2 position) : base(game)
         {
             this.items = items;
@@ -96,12 +106,21 @@ namespace GameFromScratch.Components
                 if (i == Index)
                 {
                     color = Color.DarkBlue;
-                    spriteBatch.DrawString(font, items[i], position + new Vector2(Displacement, font.LineSpacing * i + Displacement), Color.Black * .33f);
+                    spriteBatch.DrawString(font, items[i],
+                        position + new Vector2(Displacement, font.LineSpacing * i + Displacement), Color.Black * .33f);
                 }
+
                 spriteBatch.DrawString(font, items[i], position + new Vector2(0, font.LineSpacing * i), color);
             }
 
             spriteBatch.End();
+        }
+
+        public bool Intersects(Point point)
+        {
+            var (x, y) = point;
+            return x >= position.X && x < position.X + Width &&
+                   y >= position.Y && y < position.Y + Height;
         }
     }
 }
