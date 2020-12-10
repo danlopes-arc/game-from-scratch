@@ -7,7 +7,9 @@ namespace GameFromScratch.Scenes.Stages
 {
     public abstract class Stage : GameScene
     {
-        public virtual int Score { get; }
+        private Counter titleTimer = new Counter(1.5f);
+        
+        public virtual int Score { get; } = 0;
         public Stage(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
         }

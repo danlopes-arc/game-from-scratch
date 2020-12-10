@@ -13,8 +13,6 @@ namespace GameFromScratch.Components
         private SpriteFont font;
         
         public int Health { get; set; }
-        public int Destroyed { get; set; }
-        public int Missed { get; set; }
         public int Time { get; set; }
         public int  Score { get; set; }
         
@@ -33,27 +31,23 @@ namespace GameFromScratch.Components
             var shape = new Rectangle(0,0,GraphicsDevice.Viewport.Width, Height);
             
             spriteBatch.DrawFillRectangle(GraphicsDevice, shape, Color.Black);
-            
-            // var text =
-            //     $"Health: {player.Health}{Environment.NewLine}" +
-            //     $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
-            //     $"Missed: {missedAsteroids}{Environment.NewLine}" +
-            //     $"Time: {(int) stageCounter.Remaining}s";
 
             const int y = 8;
-            var healthText = Health.ToString().PadLeft(2, '_');
-            var destroyedText = Destroyed.ToString().PadLeft(2, '_');
-            var missedText = Missed.ToString().PadLeft(2, '_');
-            var timeText = Time.ToString().PadLeft(2, '_');
-            var scoreText = Score.ToString().PadLeft(4, '0');
-            var text =
-                $"Health {healthText}  " +
-                $"Destroyed {destroyedText}  " +
-                $"Missed {missedText}  " +
-                $"Time {timeText}s  " +
-                $"Score {scoreText}";
             
+            var healthText = Health.ToString();
+            var text = $"Health: {healthText}";
             spriteBatch.DrawString(font, text, new Vector2(10, y), Color.White);
+            
+            
+            var scoreText = Score.ToString().PadLeft(4, '0');
+            text = $"Score: {scoreText}";
+            var pos = font.MeasureString(text);
+            spriteBatch.DrawString(font, text, new Vector2(GraphicsDevice.Viewport.Width / 2f - pos.X / 2, y), Color.White);
+
+            var timeText = Time.ToString().PadLeft(2, '0');
+            text = $"Time {timeText}s";
+            pos = font.MeasureString(text);
+            spriteBatch.DrawString(font, text, new Vector2(GraphicsDevice.Viewport.Width - pos.X - 10, y), Color.White);
             
             spriteBatch.End();
         }

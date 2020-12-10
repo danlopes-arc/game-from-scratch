@@ -76,10 +76,11 @@ namespace GameFromScratch
         {
             stages.ForEach(s => Components.Remove(s));
             stages = new List<Stage>();
+            totalScore = 0;
+            
             var stage1 = new Stage1(this, spriteBatch);
             stages.Add(stage1);
             Components.Add(stage1);
-            totalScore = 0;
         }
 
         public void ShowGameOver(GameScene mainScene)

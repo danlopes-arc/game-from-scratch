@@ -21,7 +21,9 @@ namespace GameFromScratch.Scenes.Stages
         private Counter stageCounter;
         private InfoBar infoBar;
 
-        public override int Score => destroyedAsteroids * 100 - missedAsteroids * 50;
+        private Counter titleTimer = new Counter(1.5f);
+
+        public override int Score => destroyedAsteroids * 100;
 
         public override Rectangle Bounds => new Rectangle(0, InfoBar.Height, GraphicsDevice.Viewport.Width,
             GraphicsDevice.Viewport.Height - InfoBar.Height);
@@ -93,7 +95,7 @@ namespace GameFromScratch.Scenes.Stages
                     return;
                 }
             }
-            
+
             base.Update(gameTime);
 
             if (!stageCounter.Done)
@@ -104,8 +106,6 @@ namespace GameFromScratch.Scenes.Stages
                 asteroidSpawner.BaseVelocity = 100 + percentLevel * 100;
             }
 
-            infoBar.Destroyed = destroyedAsteroids;
-            infoBar.Missed = missedAsteroids;
             infoBar.Health = player.Health;
             infoBar.Time = (int) stageCounter.Remaining;
             infoBar.Score = Score;
@@ -135,16 +135,17 @@ namespace GameFromScratch.Scenes.Stages
         {
             base.Draw(gameTime);
 
-            // spriteBatch.Begin();
-            // var text =
-            //     $"Health: {player.Health}{Environment.NewLine}" +
-            //     $"Destroyed: {destroyedAsteroids}{Environment.NewLine}" +
-            //     $"Missed: {missedAsteroids}{Environment.NewLine}" +
-            //     $"Time: {(int) stageCounter.Remaining}s";
-            // var x = ScreenSize.X - 180;
-            // spriteBatch.DrawString(font, text, new Vector2(x, 10), Color.White);
+            if (!titleTimer.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
+            {
+                spriteBatch.Begin();
 
-            // spriteBatch.End();
+                var pos = font.MeasureString(Title);
+
+                spriteBatch.DrawString(font, Title,
+                    new Vector2(ScreenSize.X / 2f - pos.X / 2, ScreenSize.Y / 2f - pos.Y / 2), Color.White);
+
+                spriteBatch.End();
+            }
         }
     }
 }
