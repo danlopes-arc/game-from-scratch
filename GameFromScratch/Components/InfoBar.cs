@@ -30,7 +30,7 @@ namespace GameFromScratch.Components
             
             var shape = new Rectangle(0,0,GraphicsDevice.Viewport.Width, Height);
             
-            spriteBatch.DrawFillRectangle(GraphicsDevice, shape, Color.Black);
+            spriteBatch.DrawFillRectangle(GraphicsDevice, shape, Color.Black * .5f);
 
             const int y = 8;
             
