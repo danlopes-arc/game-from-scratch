@@ -16,6 +16,7 @@ namespace GameFromScratch.Components
         public int Destroyed { get; set; }
         public int Missed { get; set; }
         public int Time { get; set; }
+        public int  Score { get; set; }
         
         public InfoBar(Game game, SpriteBatch spriteBatch) : base(game)
         {
@@ -44,11 +45,13 @@ namespace GameFromScratch.Components
             var destroyedText = Destroyed.ToString().PadLeft(2, '_');
             var missedText = Missed.ToString().PadLeft(2, '_');
             var timeText = Time.ToString().PadLeft(2, '_');
+            var scoreText = Score.ToString().PadLeft(4, '0');
             var text =
-                $"Health> {healthText}   " +
-                $"Destroyed> {destroyedText}   " +
-                $"Missed> {missedText}   " +
-                $"Time> {timeText}s";
+                $"Health {healthText}  " +
+                $"Destroyed {destroyedText}  " +
+                $"Missed {missedText}  " +
+                $"Time {timeText}s  " +
+                $"Score {scoreText}";
             
             spriteBatch.DrawString(font, text, new Vector2(10, y), Color.White);
             

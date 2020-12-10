@@ -78,8 +78,6 @@ namespace GameFromScratch.Scenes.Stages
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
             if (player.Health == 0)
             {
                 gameMain.ShowGameOver(this);
@@ -95,6 +93,8 @@ namespace GameFromScratch.Scenes.Stages
                     return;
                 }
             }
+            
+            base.Update(gameTime);
 
             if (!stageCounter.Done)
             {
@@ -108,6 +108,7 @@ namespace GameFromScratch.Scenes.Stages
             infoBar.Missed = missedAsteroids;
             infoBar.Health = player.Health;
             infoBar.Time = (int) stageCounter.Remaining;
+            infoBar.Score = Score;
 
             // if (destroyedAsteroids == 10)
             // {
