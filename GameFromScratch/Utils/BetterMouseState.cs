@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace GameFromScratch.Utils
@@ -7,6 +8,8 @@ namespace GameFromScratch.Utils
     {
         public static MouseState Last { get; private set; } = Mouse.GetState();
         public static MouseState Current { get; private set; } = Mouse.GetState();
+
+        public static Point Displacement { get; private set; }
 
         public static bool IsDown(MouseButton button)
         {
@@ -55,6 +58,8 @@ namespace GameFromScratch.Utils
         {
             Last = Current;
             Current = Mouse.GetState();
+
+            Displacement = Current.Position - Last.Position;
         }
     }
 }
