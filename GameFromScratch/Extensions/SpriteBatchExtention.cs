@@ -38,25 +38,16 @@ namespace GameFromScratch.Extensions
             var (x, y) = position;
             for (int i = 0; i < richString.Count; i++)
             {
-                var width = font.MeasureString(richString.Strings[i]).X;
+                var text = richString.Strings[i];
                 var color = richString.Colors[i];
-                
-                var texts = richString.Strings[i]
-                    .Split(new[] {Environment.NewLine, "\n", "\r\n"}, StringSplitOptions.None);
-                for (var j = 0; j < texts.Length; j++)
+                if (text == Environment.NewLine)
                 {
-                    var text = texts[j];
-                    spriteBatch.DrawString(font, text, new Vector2(x, y), color);
-                    if (texts.Length > 1 && j < texts.Length - 1)
-                    {
-                        y += font.LineSpacing;
-                        x = position.X;
-                    }
-                    else
-                    {
-                        x += font.MeasureString(text).X;
-                    }
+                    x = position.X;
+                    y += font.LineSpacing;
+                    continue;
                 }
+                spriteBatch.DrawString(font, text, new Vector2(x, y), color);
+                x += font.MeasureString(text).X;
             }
         }
     }
