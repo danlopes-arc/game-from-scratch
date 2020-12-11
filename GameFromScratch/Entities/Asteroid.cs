@@ -7,9 +7,12 @@ namespace GameFromScratch.Entities
 {
     public class Asteroid : Entity
     {
+        private float rotation;
+
         public Asteroid(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
             Size = new Vector2(50, 50);
+            Texture = Game.Content.Load<Texture2D>("Images/Asteroid1");
         }
 
         public override void Update(GameTime gameTime)
@@ -29,8 +32,10 @@ namespace GameFromScratch.Entities
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-
-            spriteBatch.DrawFillRectangle(GraphicsDevice, Bounds, Color.Blue);
+            var rec = new Rectangle(Bounds.Location + (Bounds.Size.ToVector2() / 2).ToPoint(), Bounds.Size);
+            spriteBatch.Draw(Texture, rec, null, Color.White, rotation += 0.05f,
+                new Vector2(Texture.Width / 2f, Texture.Height / 2f), SpriteEffects.None, 0);
+            // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Blue);
 
             spriteBatch.End();
         }

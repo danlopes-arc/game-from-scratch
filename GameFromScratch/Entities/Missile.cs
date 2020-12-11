@@ -11,6 +11,7 @@ namespace GameFromScratch.Entities
         {
             Size = new Vector2(40, 20);
             Velocity = new Vector2(300, 0);
+            Texture = Game.Content.Load<Texture2D>("Images/Missile");
         }
         
         public override void Update(GameTime gameTime)
@@ -45,7 +46,8 @@ namespace GameFromScratch.Entities
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawFillRectangle(GraphicsDevice, Bounds, Color.Green);
+            spriteBatch.Draw(Texture, Bounds, Color.White);
+            // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Green);
 
             spriteBatch.End();
         }

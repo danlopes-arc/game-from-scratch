@@ -22,8 +22,9 @@ namespace GameFromScratch.Entities
         public int Health { get; set; }
         public Player(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
-            Size = new Vector2(60, 40);
+            Size = new Vector2(80, 80);
             shotTimer = new Counter(.3f);
+            Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
         }
 
         public override void Update(GameTime gameTime)
@@ -72,8 +73,9 @@ namespace GameFromScratch.Entities
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-
-            spriteBatch.DrawFillRectangle(GraphicsDevice, Bounds, Color.Red);
+            
+            spriteBatch.Draw(Texture, Bounds, Color.White);
+            // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Red);
 
             spriteBatch.End();
         }
