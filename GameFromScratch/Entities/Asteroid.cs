@@ -1,4 +1,5 @@
-﻿using GameFromScratch.Extensions;
+﻿using GameFromScratch.Animation;
+using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,7 +21,8 @@ namespace GameFromScratch.Entities
             base.Update(gameTime);
 
             Move(gameTime);
-
+            rotation += .05f;
+            animator.Update((float) gameTime.ElapsedGameTime.TotalSeconds);
             if (Position.X + Size.X < 0)
             {
                 Destroy();
@@ -33,18 +35,17 @@ namespace GameFromScratch.Entities
 
             spriteBatch.Begin();
             var rec = new Rectangle(Bounds.Location + (Bounds.Size.ToVector2() / 2).ToPoint(), Bounds.Size);
-            spriteBatch.Draw(Texture, rec, null, Color.White, rotation += 0.05f,
+            spriteBatch.Draw(Texture, rec, null, Color.White, rotation,
                 new Vector2(Texture.Width / 2f, Texture.Height / 2f), SpriteEffects.None, 0);
             // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Blue);
-
+            
             spriteBatch.End();
         }
 
         public override void OnCollision(Entity other)
         {
-            if (other is Player)
+            if (other is Player player)
             {
-                var player = other as Player;
                 player.Health--;
 
                 Destroy();
