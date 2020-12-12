@@ -23,13 +23,14 @@ namespace GameFromScratch.Animation
             this.totalDuration = totalDuration;
             this.count = Math.Max(count, rowCount * colCount);
 
-            rowCount = texture.Width / size.X;
-            colCount = texture.Height / size.Y;
+            colCount = texture.Width / size.X;
+            rowCount = texture.Height / size.Y;
 
             frames = new Rectangle[count];
             for (int i = 0; i < Count; i++)
             {
-                frames[i] = new Rectangle(new Point(i % ColCount * Size.X, i / RowCount * Size.Y), size);
+                var index = i + StartIndex;
+                frames[i] = new Rectangle(new Point((index % ColCount) * Size.X, (index / ColCount) * Size.Y), size);
             }
         }
 
