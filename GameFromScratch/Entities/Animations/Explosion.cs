@@ -3,14 +3,14 @@ using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameFromScratch.Entities
+namespace GameFromScratch.Entities.Animations
 {
     public class Explosion : Entity
     {
-
         public Explosion(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
-            animator.Sequence = new Sequence(Game.Content.Load<Texture2D>("Sequences/Explosion"), new Point(64, 64), .2f);
+            animator.Sequence =
+                new Sequence(Game.Content.Load<Texture2D>("Sequences/Explosion"), new Point(64, 64), .2f);
             animator.Play();
         }
 
@@ -22,6 +22,7 @@ namespace GameFromScratch.Entities
                 Destroy();
                 return;
             }
+
             animator.Update((float) gameTime.ElapsedGameTime.TotalSeconds);
         }
 
@@ -30,11 +31,10 @@ namespace GameFromScratch.Entities
             base.Draw(gameTime);
 
             if (Destroyed) return;
-            
+
             spriteBatch.Begin();
             animator.Draw(Position.ToPoint(), Size.ToPoint());
             spriteBatch.End();
-            
         }
     }
 }
