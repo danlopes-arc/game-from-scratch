@@ -1,4 +1,5 @@
-﻿using GameFromScratch.Scenes;
+﻿using GameFromScratch.Animation;
+using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +11,7 @@ namespace GameFromScratch.Entities
 
         protected SpriteBatch spriteBatch;
         protected GameScene scene;
+        protected Animator animator;
 
         public Texture2D Texture { get; set; } = null;
         public Vector2 Position { get; set; } = Vector2.Zero;
@@ -31,6 +33,7 @@ namespace GameFromScratch.Entities
         {
             this.spriteBatch = spriteBatch;
             this.scene = scene;
+            animator = new Animator(spriteBatch);
         }
 
         public virtual void OnCollision(Entity other)
