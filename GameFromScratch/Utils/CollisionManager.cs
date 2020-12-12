@@ -30,6 +30,8 @@ namespace GameFromScratch.Utils
                 for (int j = i + 1; j < entities.Count; j++)
                 {
                     var entityB = entities[j];
+                    if (entityA.IgnoreCollision || entityB.IgnoreCollision) continue;
+                    
                     if (entityA.Bounds.Intersects(entityB.Bounds))
                     {
                         entityA.OnCollision(entityB);

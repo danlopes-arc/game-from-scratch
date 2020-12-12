@@ -17,8 +17,9 @@ namespace GameFromScratch.Entities
         public Vector2 Position { get; set; } = Vector2.Zero;
         public Vector2 Velocity { get; set; } = Vector2.Zero;
         public Vector2 Size { get; set; } = Vector2.Zero;
-        public bool Killed { get; private set; }
-        public bool Destroyed { get; private set; }
+        public bool Killed { get; protected set; }
+        public bool Destroyed { get; protected set; }
+        public bool IgnoreCollision { get; protected set; }
         public Rectangle Bounds
         {
             get => new Rectangle(Position.ToPoint(), Size.ToPoint());
