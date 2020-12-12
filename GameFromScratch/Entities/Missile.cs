@@ -1,4 +1,5 @@
-﻿using GameFromScratch.Extensions;
+﻿using GameFromScratch.Entities.Animations;
+using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -37,11 +38,11 @@ namespace GameFromScratch.Entities
             {
                 other.Kill();
                 Destroy();
-                scene.AddEntity(new Explosion(scene, spriteBatch)
-                {
-                    Position = Position - new Vector2(0, Size.Y),
-                    Size = new Vector2(60, 60)
-                });
+                // scene.AddEntity(new Explosion2(scene, spriteBatch)
+                // {
+                //     Position = Position - new Vector2(0, Size.Y),
+                //     Size = new Vector2(60, 60)
+                // });
             }
         }
 

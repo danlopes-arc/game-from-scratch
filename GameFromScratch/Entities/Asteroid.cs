@@ -1,4 +1,5 @@
 ﻿using GameFromScratch.Animation;
+using GameFromScratch.Entities.Animations;
 using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
@@ -38,7 +39,7 @@ namespace GameFromScratch.Entities
             spriteBatch.Draw(Texture, rec, null, Color.White, rotation,
                 new Vector2(Texture.Width / 2f, Texture.Height / 2f), SpriteEffects.None, 0);
             // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Blue);
-            
+
             spriteBatch.End();
         }
 
@@ -48,8 +49,18 @@ namespace GameFromScratch.Entities
             {
                 player.Health--;
 
-                Destroy();
+                Kill();
             }
+        }
+
+        public override void Kill()
+        {
+            scene.AddEntity(new AsteroidExplosion(scene, spriteBatch)
+            {
+                Position = Position - Size / 2,
+                Size = Size * 2
+            });
+            base.Kill();
         }
     }
 }
