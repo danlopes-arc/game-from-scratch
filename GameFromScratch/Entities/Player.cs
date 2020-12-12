@@ -1,4 +1,5 @@
-﻿using GameFromScratch.Extensions;
+﻿using System;
+using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
@@ -10,7 +11,20 @@ namespace GameFromScratch.Entities
     public class Player : Entity
     {
         private const float MoveSpeed = 200;
-
+        private bool invincible;
+        public bool Invincible
+        {
+            get => invincible;
+            set
+            {
+                invincible = value;
+                if (value)
+                {
+                    invincibleTimer.Reset();
+                }
+            }
+        }
+        private Counter invincibleTimer = new Counter(1);
         public float ShotInterval
         {
             get => shotTimer.Total;
@@ -18,8 +32,26 @@ namespace GameFromScratch.Entities
         }
 
         private Counter shotTimer;
-        
-        public int Health { get; set; }
+        private int health;
+
+        public int Health
+        {
+            get => health;
+            set
+            {
+                var oldHealth = health;
+                if (value >= health || !Invincible)
+                {
+                    health = value;
+                }
+
+                if (health < oldHealth)
+                {
+                    Invincible = true;
+                }
+            }
+        }
+
         public Player(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
             Size = new Vector2(80, 80);
@@ -66,6 +98,11 @@ namespace GameFromScratch.Entities
                     shotTimer.Reset();
                 }
             }
+
+            if (Invincible && invincibleTimer.Update((float)gameTime.ElapsedGameTime.TotalSeconds))
+            {
+                Invincible = false;
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -73,8 +110,14 @@ namespace GameFromScratch.Entities
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            
-            spriteBatch.Draw(Texture, Bounds, Color.White);
+            var color = Color.White;
+            var newBounds = Bounds;
+            if (Invincible && (int)(invincibleTimer.Current / invincibleTimer.Total * 10) % 2 == 0)
+            {
+                color = Color.Red;
+                newBounds = new Rectangle(new Point(Bounds.Location.X + 2, Bounds.Location.Y), Bounds.Size);
+            }
+            spriteBatch.Draw(Texture, newBounds, color);
             // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Red);
 
             spriteBatch.End();
