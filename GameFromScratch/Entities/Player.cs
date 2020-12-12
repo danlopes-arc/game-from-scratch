@@ -1,4 +1,5 @@
 ﻿using System;
+using GameFromScratch.Entities.Animations;
 using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using GameFromScratch.Utils;
@@ -24,6 +25,9 @@ namespace GameFromScratch.Entities
                 }
             }
         }
+
+        private Explosion2 explosionAnimation;
+        
         private Counter invincibleTimer = new Counter(1);
         public float ShotInterval
         {
@@ -48,6 +52,12 @@ namespace GameFromScratch.Entities
                 if (health < oldHealth)
                 {
                     Invincible = true;
+                    explosionAnimation = new Explosion2(scene, spriteBatch)
+                    {
+                        Position = Position - Size / 2,
+                        Size = Size * 2
+                    };
+                    scene.AddEntity(explosionAnimation);
                 }
             }
         }
@@ -78,6 +88,17 @@ namespace GameFromScratch.Entities
             //Move(gameTime);
 
             Position = new Vector2(Position.X, Mouse.GetState().Y - Size.Y / 2);
+            if (explosionAnimation != null)
+            {
+                if (!explosionAnimation.Destroyed)
+                {
+                    explosionAnimation.Position = Position - Size / 2;
+                }
+                else
+                {
+                    explosionAnimation = null;
+                }
+            }
 
             if (Position.Y < scene.Bounds.Top)
             {
