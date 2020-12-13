@@ -16,7 +16,7 @@ namespace GameFromScratch.Entities
         public EnemyMissile(GameScene scene, SpriteBatch spriteBatch, Player player) : base(scene, spriteBatch)
         {
             this.player = player;
-            Size = new Vector2(40, 20);
+            Size = new Vector2(60, 15);
             Velocity = new Vector2(-200, 0);
             Texture = Game.Content.Load<Texture2D>("Images/EnemyMissile");
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
