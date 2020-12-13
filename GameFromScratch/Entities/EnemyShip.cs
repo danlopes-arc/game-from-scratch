@@ -12,8 +12,8 @@ namespace GameFromScratch.Entities
 {
     public class EnemyShip : Entity
     {
-        private const float MoveSpeed = 100;
-        private const float MoveDistance = 100;
+        private const float MoveSpeed = 120;
+        private const float MoveDistance = 150;
         
         private SoundEffect explosionSound;
         private Player player;
@@ -28,8 +28,8 @@ namespace GameFromScratch.Entities
         public EnemyShip(GameScene scene, SpriteBatch spriteBatch, Player player) : base(scene, spriteBatch)
         {
             this.player = player;
-            Size = new Vector2(80, 80);
-            // Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
+            Size = new Vector2(128, 80);
+            Texture = Game.Content.Load<Texture2D>("Images/EnemyShip");
             
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
@@ -107,8 +107,8 @@ namespace GameFromScratch.Entities
                 color *= 0;
             }
             
-            // spriteBatch.Draw(Texture, Bounds, Color.White);
-            spriteBatch.DrawRectangle(GraphicsDevice, Bounds, color);
+            spriteBatch.Draw(Texture, Bounds, null, color, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+            // spriteBatch.DrawRectangle(GraphicsDevice, Bounds, color);
 
             spriteBatch.End();
         }
@@ -121,10 +121,12 @@ namespace GameFromScratch.Entities
             {
                 Shoot();
             }
+            var side = Math.Max(Size.X, Size.Y);
+            var posY = Position.Y + Size.Y / 2 - side / 2;
             scene.AddEntity(new Explosion2(scene, spriteBatch)
             {
-                Position = Position - Size / 2,
-                Size = Size * 2
+                Position = new Vector2(Position.X, posY) - new Vector2(side) / 2,
+                Size = new Vector2(side) * 2
             });
             explosionSound.Play(1, 0, 0);
             base.Kill();
