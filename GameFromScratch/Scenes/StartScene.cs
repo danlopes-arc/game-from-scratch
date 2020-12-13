@@ -7,6 +7,7 @@ using System.Text;
 using GameFromScratch.Components;
 using GameFromScratch.Extensions;
 using GameFromScratch.Utils;
+using Microsoft.Xna.Framework.Media;
 using SharpDX.DirectWrite;
 
 namespace GameFromScratch.Scenes

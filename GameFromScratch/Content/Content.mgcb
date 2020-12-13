@@ -116,23 +116,23 @@
 /processorParam:TextureFormat=Color
 /build:Images/TerranPlanet.png
 
-#begin Music/BattleSong.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Music/BattleSong.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Music/BattleSong.wav
+/build:Music/BattleSong.mp3
 
-#begin Music/ChillSong.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Music/ChillSong.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Music/ChillSong.wav
+/build:Music/ChillSong.mp3
 
-#begin Music/CongratzSong.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Music/CongratsSong.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Music/CongratzSong.wav
+/build:Music/CongratsSong.mp3
 
 #begin Sequences/Explosion.png
 /importer:TextureImporter
@@ -169,4 +169,22 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sequences/RockExplosion.png
+
+#begin SoundEffects/AsteroidExplosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/AsteroidExplosion.wav
+
+#begin SoundEffects/ShipExplosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/ShipExplosion.wav
+
+#begin SoundEffects/ShipHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/ShipHit.wav
 

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using GameFromScratch.Scenes.OverlayScenes;
 using GameFromScratch.Scenes.Stages;
 using GameFromScratch.Utils;
+using Microsoft.Xna.Framework.Media;
 
 namespace GameFromScratch
 {
@@ -57,7 +58,9 @@ namespace GameFromScratch
             Components.Add(summaryScene);
 
             ResetStages();
-            startScene.Show();
+            ShowStart();
+            
+            MediaPlayer.IsRepeating = true;
         }
 
         private void HideAllScenes()
@@ -111,6 +114,7 @@ namespace GameFromScratch
         {
             HideAllScenes();
             startScene.Show();
+            MediaPlayer.Play(Content.Load<Song>("Music/ChillSong"));
         }
 
         public void ShowCongratulation()
@@ -131,12 +135,15 @@ namespace GameFromScratch
             }
 
             stages[stageIndex].Show();
+            
+            MediaPlayer.Play(Content.Load<Song>("Music/BattleSong"));
         }
 
         public void ShowStage()
         {
             HideAllScenes();
             stages[stageIndex].Show();
+            MediaPlayer.Play(Content.Load<Song>("Music/BattleSong"));
         }
 
         public void ShowSummary(Stage stage)
@@ -147,6 +154,7 @@ namespace GameFromScratch
             summaryScene.MainScene = stage;
             HideAllScenes();
             summaryScene.Show();
+            MediaPlayer.Play(Content.Load<Song>("Music/CongratsSong"));
         }
 
         protected override void Update(GameTime gameTime)

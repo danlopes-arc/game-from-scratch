@@ -4,6 +4,7 @@ using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -13,6 +14,8 @@ namespace GameFromScratch.Entities
     {
         private const float MoveSpeed = 200;
         private bool invincible;
+        private SoundEffect explosionSound;
+        private SoundEffect hitSound;
         public bool Invincible
         {
             get => invincible;
@@ -58,6 +61,14 @@ namespace GameFromScratch.Entities
                         Size = Size * 2
                     };
                     scene.AddEntity(explosionAnimation);
+                    if (health == 0)
+                    {
+                        explosionSound.Play();
+                    }
+                    else
+                    {
+                        hitSound.Play();
+                    }
                 }
             }
         }
@@ -67,6 +78,8 @@ namespace GameFromScratch.Entities
             Size = new Vector2(80, 80);
             shotTimer = new Counter(.3f);
             Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
+            explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
+            hitSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipHit");
         }
 
         public override void Update(GameTime gameTime)

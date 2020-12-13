@@ -7,6 +7,7 @@ using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace GameFromScratch.Scenes.Stages
 {
@@ -18,7 +19,7 @@ namespace GameFromScratch.Scenes.Stages
         private int missedAsteroids;
         private int asteroidCount;
         private AsteroidSpawner asteroidSpawner;
-        private float stageTime = 30;
+        private float stageTime = 5;
         private Counter stageCounter;
         private InfoBar infoBar;
 

@@ -3,6 +3,7 @@ using GameFromScratch.Entities.Animations;
 using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameFromScratch.Entities
@@ -10,11 +11,13 @@ namespace GameFromScratch.Entities
     public class Asteroid : Entity
     {
         private float rotation;
+        private SoundEffect explosionSound;
 
         public Asteroid(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
             Size = new Vector2(50, 50);
             Texture = Game.Content.Load<Texture2D>("Images/Asteroid1");
+            explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
 
         public override void Update(GameTime gameTime)
@@ -60,6 +63,7 @@ namespace GameFromScratch.Entities
                 Position = Position - Size / 2,
                 Size = Size * 2
             });
+            explosionSound.Play(.5f, 0, 0);
             base.Kill();
         }
     }
