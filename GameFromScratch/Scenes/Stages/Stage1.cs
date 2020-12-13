@@ -19,7 +19,7 @@ namespace GameFromScratch.Scenes.Stages
         private int missedAsteroids;
         private int asteroidCount;
         private AsteroidSpawner asteroidSpawner;
-        private float stageTime = 0;
+        private float stageTime = 30;
         private Counter stageCounter;
         private InfoBar infoBar;
 
