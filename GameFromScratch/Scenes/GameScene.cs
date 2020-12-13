@@ -35,12 +35,14 @@ namespace GameFromScratch.Scenes
         {
             Enabled = true;
             Visible = true;
+            Unmute();
         }
 
         public virtual void Hide()
         {
             Enabled = false;
             Visible = false;
+            Mute();
         }
         
         public override void Update(GameTime gameTime)
@@ -80,6 +82,14 @@ namespace GameFromScratch.Scenes
         {
             collisionManager.RemoveEntity(entity);
             components.Remove(entity);
+        }
+        
+        public virtual void Mute()
+        {
+        }
+        
+        public virtual void Unmute()
+        {
         }
     }
 }
