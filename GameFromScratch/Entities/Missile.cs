@@ -34,7 +34,7 @@ namespace GameFromScratch.Entities
 
         public override void OnCollision(Entity other)
         {
-            if (other is Asteroid || other is EnemyMissile)
+            if (other is Asteroid || other is EnemyMissile || other is EnemyShip)
             {
                 other.Kill();
                 Destroy();
