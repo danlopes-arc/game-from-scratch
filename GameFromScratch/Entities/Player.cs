@@ -16,6 +16,7 @@ namespace GameFromScratch.Entities
         private bool invincible;
         private SoundEffect explosionSound;
         private SoundEffect hitSound;
+        private SoundEffect shotSound;
         public bool Invincible
         {
             get => invincible;
@@ -80,6 +81,7 @@ namespace GameFromScratch.Entities
             Texture = Game.Content.Load<Texture2D>("Images/YellowShip");
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
             hitSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipHit");
+            shotSound = Game.Content.Load<SoundEffect>("SoundEffects/QuietShot");
         }
 
         public override void Update(GameTime gameTime)
@@ -130,6 +132,7 @@ namespace GameFromScratch.Entities
                     missile.Position = new Vector2(Position.X + Size.X, Position.Y + Size.Y / 2 - missile.Size.Y / 2);
                     scene.AddEntity(missile);
                     shotTimer.Reset();
+                    shotSound.Play(.3f, 0, 0);
                 }
             }
 

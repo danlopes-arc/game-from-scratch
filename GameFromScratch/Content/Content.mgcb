@@ -230,6 +230,12 @@
 /processorParam:Quality=Best
 /build:SoundEffects/AsteroidExplosion.wav
 
+#begin SoundEffects/QuietShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/QuietShot.wav
+
 #begin SoundEffects/Radar.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
