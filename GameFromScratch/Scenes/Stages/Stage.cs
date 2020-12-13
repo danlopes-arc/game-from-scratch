@@ -28,7 +28,7 @@ namespace GameFromScratch.Scenes.Stages
         {
             if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Escape))
             {
-                gameMain.Pause(this);
+                gameMain.ShowStart();
             }
             base.Update(gameTime);
         }
