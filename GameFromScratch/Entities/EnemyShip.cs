@@ -16,7 +16,6 @@ namespace GameFromScratch.Entities
         private const float MoveDistance = 100;
         
         private SoundEffect explosionSound;
-        private Explosion2 explosionAnimation;
         private Player player;
         
         private bool invincible = true;
@@ -31,7 +30,8 @@ namespace GameFromScratch.Entities
             this.player = player;
             Size = new Vector2(80, 80);
             // Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
-            // explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
+            
+            explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
 
         private void Shoot()
@@ -126,7 +126,7 @@ namespace GameFromScratch.Entities
                 Position = Position - Size / 2,
                 Size = Size * 2
             });
-            // explosionSound.Play(.5f, 0, 0);
+            explosionSound.Play(1, 0, 0);
             base.Kill();
         }
     }
