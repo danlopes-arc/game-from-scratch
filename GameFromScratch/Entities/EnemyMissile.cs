@@ -18,7 +18,7 @@ namespace GameFromScratch.Entities
             this.player = player;
             Size = new Vector2(60, 15);
             Velocity = new Vector2(-200, 0);
-            Texture = Game.Content.Load<Texture2D>("Images/EnemyMissile");
+            Texture = Game.Content.Load<Texture2D>("Images/MissileRedStripe");
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
 
