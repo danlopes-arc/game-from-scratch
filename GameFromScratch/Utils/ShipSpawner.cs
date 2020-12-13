@@ -9,18 +9,23 @@ namespace GameFromScratch.Utils
     public class ShipSpawner : GameComponent
     {
         private EnemyShip ship;
-        private Counter shipTimer;
+        private Counter counter;
         private SpriteBatch spriteBatch;
         private Stage stage;
         private Player player;
         private Random r = new Random();
+        public float Delay
+        {
+            get => counter.Total;
+            set => counter.Total = value;
+        }
         
-        public ShipSpawner(Game game, Stage stage, SpriteBatch spriteBatch, Player player) : base(game)
+        public ShipSpawner(Game game, Stage stage, SpriteBatch spriteBatch, Player player, float delay = 3) : base(game)
         {
             this.stage = stage;
             this.spriteBatch = spriteBatch;
             this.player = player;
-            shipTimer = new Counter(3);
+            counter = new Counter(delay);
         }
 
         public override void Update(GameTime gameTime)
@@ -33,12 +38,12 @@ namespace GameFromScratch.Utils
                 if (ship.Destroyed)
                 {
                     ship = null;
-                    shipTimer.Reset();
+                    counter.Reset();
                 }
                 return;
             }
             
-            if (!shipTimer.Update(seconds))
+            if (!counter.Update(seconds))
             {
                 return;
             }
@@ -47,6 +52,7 @@ namespace GameFromScratch.Utils
             var height = r.Next(stage.Bounds.Top ,stage.Bounds.Bottom - (int) ship.Size.Y);
             ship.Position = new Vector2(stage.Bounds.Width, height);
             stage.AddEntity(ship);
+            counter.Reset();
         }
     }
 }
