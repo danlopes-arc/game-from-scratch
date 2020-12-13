@@ -127,7 +127,8 @@ namespace GameFromScratch.Scenes.Stages
             if (stageCounter.Update((float) gameTime.ElapsedGameTime.TotalSeconds))
             {
                 asteroidSpawner.Rate = 0;
-                if (asteroidCount == 0)
+                shipSpawner.Active = false;
+                if (asteroidCount == 0 && enemyMissileCount == 0 && enemyShipCount == 0)
                 {
                     gameMain.ShowSummary(this);
                     return;
