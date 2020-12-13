@@ -19,6 +19,7 @@ namespace PlanetDefender
         private StartScene startScene;
         private CongratulationScene congratulationScene;
         private HelpScene helpScene;
+        private AboutScene aboutScene;
         
         private GameOverScene gameOverScene;
         private PauseScene pauseScene;
@@ -48,6 +49,7 @@ namespace PlanetDefender
             startScene = new StartScene(this, spriteBatch);
             congratulationScene = new CongratulationScene(this, spriteBatch);
             helpScene = new HelpScene(this, spriteBatch);
+            aboutScene = new AboutScene(this, spriteBatch);
             
             gameOverScene = new GameOverScene(this, spriteBatch);
             pauseScene = new PauseScene(this, spriteBatch);
@@ -56,6 +58,7 @@ namespace PlanetDefender
             Components.Add(startScene);
             Components.Add(congratulationScene);
             Components.Add(helpScene);
+            Components.Add(aboutScene);
             
             Components.Add(gameOverScene);
             Components.Add(pauseScene);
@@ -133,6 +136,11 @@ namespace PlanetDefender
         {
             HideAllScenes();
             helpScene.Show();
+        }
+        public void ShowAbout()
+        {
+            HideAllScenes();
+            aboutScene.Show();
         }
 
         public void ShowCongratulation()

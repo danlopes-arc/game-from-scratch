@@ -51,6 +51,9 @@ namespace PlanetDefender.Scenes
                     case 1:
                         gameMain.ShowHelp();
                         break;
+                    case 2:
+                        gameMain.ShowAbout();
+                        break;
                     case 3:
                         Game.Exit();
                         break;
