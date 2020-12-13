@@ -29,6 +29,9 @@ namespace PlanetDefender
         private int stageIndex;
         private int totalScore;
 
+        private Song chillSong;
+        private bool isPlayingChillSong;
+
         public GameMain()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -41,7 +44,7 @@ namespace PlanetDefender
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-
+            chillSong = Content.Load<Song>("Music/ChillSong");
             startScene = new StartScene(this, spriteBatch);
             congratulationScene = new CongratulationScene(this, spriteBatch);
             helpScene = new HelpScene(this, spriteBatch);
@@ -119,7 +122,11 @@ namespace PlanetDefender
         {
             HideAllScenes();
             startScene.Show();
-            MediaPlayer.Play(Content.Load<Song>("Music/ChillSong"));
+            if (!isPlayingChillSong)
+            {
+                MediaPlayer.Play(chillSong);
+                isPlayingChillSong = true;
+            }
         }
         
         public void ShowHelp()
@@ -148,6 +155,7 @@ namespace PlanetDefender
             stages[stageIndex].Show();
             
             MediaPlayer.Play(Content.Load<Song>("Music/BattleSong"));
+            isPlayingChillSong = false;
         }
 
         public void ShowStage()
@@ -155,6 +163,7 @@ namespace PlanetDefender
             HideAllScenes();
             stages[stageIndex].Show();
             MediaPlayer.Play(Content.Load<Song>("Music/BattleSong"));
+            isPlayingChillSong = false;
         }
 
         public void ShowSummary(Stage stage)
@@ -166,6 +175,7 @@ namespace PlanetDefender
             HideAllScenes();
             summaryScene.Show();
             MediaPlayer.Play(Content.Load<Song>("Music/CongratsSong"));
+            isPlayingChillSong = false;
         }
 
         protected override void Update(GameTime gameTime)
