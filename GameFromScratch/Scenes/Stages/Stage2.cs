@@ -186,5 +186,23 @@ namespace GameFromScratch.Scenes.Stages
                 spriteBatch.End();
             }
         }
+
+        public override void Mute()
+        {
+            base.Mute();
+            if (alarmSound != null && alarmSound.State == SoundState.Playing)
+            {
+                alarmSound.Pause();
+            }
+        }
+        
+        public override void Unmute()
+        {
+            base.Unmute();
+            if (alarmSound != null && alarmSound.State == SoundState.Paused)
+            {
+                alarmSound.Play();
+            }
+        }
     }
 }
