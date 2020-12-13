@@ -18,6 +18,7 @@ namespace GameFromScratch.Scenes
 
         public StartScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
+            components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
             menu = new MainMenu(spriteBatch,
                 game,
@@ -56,11 +57,11 @@ namespace GameFromScratch.Scenes
 
             var richText = new RichString() +
                            "Press " +
-                           ("Up/W ", Color.DarkBlue) +
+                           ("Up/W ", Color.Cyan) +
                            "or " +
-                           ("Down/S ", Color.DarkBlue) +
+                           ("Down/S ", Color.Cyan) +
                            "to navigate\nPress " +
-                           ("ENTER ", Color.DarkBlue) +
+                           ("ENTER ", Color.Cyan) +
                            "to select";
 
             spriteBatch.DrawRichString(font, richText,

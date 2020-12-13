@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GameFromScratch.Components;
 using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
@@ -13,6 +14,7 @@ namespace GameFromScratch.Scenes
         private SpriteFont font;
         public CongratulationScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
+            components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
         }
 

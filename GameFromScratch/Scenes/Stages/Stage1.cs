@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameFromScratch.Components;
 using GameFromScratch.Entities;
 using GameFromScratch.Utils;
@@ -30,6 +31,7 @@ namespace GameFromScratch.Scenes.Stages
 
         public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
+            components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
             Title = "Stage 1";
 

@@ -105,9 +105,9 @@ namespace GameFromScratch.Components
                 var color = Color.White;
                 if (i == Index)
                 {
-                    color = Color.DarkBlue;
+                    color = Color.Cyan;
                     spriteBatch.DrawString(font, items[i],
-                        position + new Vector2(Displacement, font.LineSpacing * i + Displacement), Color.Black * .33f);
+                        position + new Vector2(Displacement, font.LineSpacing * i + Displacement), Color.White * .33f);
                 }
 
                 spriteBatch.DrawString(font, items[i], position + new Vector2(0, font.LineSpacing * i), color);
