@@ -16,11 +16,19 @@ namespace GameFromScratch.Scenes
     {
         private SpriteFont font;
         private MainMenu menu;
+        private Texture2D shipTexture;
+        private const float MaxShipY = 180;
+        private const float MinShipY = 160;
+        private const float ShipX = 500;
+        private const float ShipSpeed = 7;
+        private float shipY;
+        private bool raising;
 
         public StartScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
+            shipTexture = Game.Content.Load<Texture2D>("Images/YellowShip");
             menu = new MainMenu(spriteBatch,
                 game,
                 new List<string>() {"Play", "Help", "About", "Quit"},
@@ -33,6 +41,7 @@ namespace GameFromScratch.Scenes
 
         public override void Update(GameTime gameTime)
         {
+            var seconds = (float) gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
 
             if (InputEnabled && BetterKeyboardState.IsJustDown(Keys.Enter) ||
@@ -46,6 +55,25 @@ namespace GameFromScratch.Scenes
                     case 3:
                         Game.Exit();
                         break;
+                }
+            }
+
+            if (raising)
+            {
+                shipY += ShipSpeed * seconds;
+                if (shipY > MaxShipY)
+                {
+                    shipY = MaxShipY;
+                    raising = false;
+                }
+            }
+            else
+            {
+                shipY -= ShipSpeed * seconds;
+                if (shipY < MinShipY)
+                {
+                    shipY = MinShipY;
+                    raising = true;
                 }
             }
         }
@@ -69,6 +97,10 @@ namespace GameFromScratch.Scenes
 
             spriteBatch.DrawRichString(font, richText,
                 new Vector2(100, Game.GraphicsDevice.Viewport.Height - font.MeasureString(richText.ToString()).Y - 40));
+
+            var destRect = new Rectangle((int) ShipX, (int) shipY, (int) (shipTexture.Width * 1.5f),
+                (int) (shipTexture.Height * 1.5f));
+            spriteBatch.Draw(shipTexture, destRect, Color.White);
 
             spriteBatch.End();
         }
