@@ -1,6 +1,9 @@
-﻿using GameFromScratch.Extensions;
+﻿using System;
+using GameFromScratch.Entities.Animations;
+using GameFromScratch.Extensions;
 using GameFromScratch.Scenes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameFromScratch.Entities
@@ -8,6 +11,7 @@ namespace GameFromScratch.Entities
     public class EnemyMissile : Entity
     {
         private Player player;
+        private SoundEffect explosionSound;
 
         public EnemyMissile(GameScene scene, SpriteBatch spriteBatch, Player player) : base(scene, spriteBatch)
         {
@@ -15,6 +19,7 @@ namespace GameFromScratch.Entities
             Size = new Vector2(40, 20);
             Velocity = new Vector2(-200, 0);
             // Texture = Game.Content.Load<Texture2D>("Images/Missile");
+            explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
 
         public override void Update(GameTime gameTime)
@@ -57,6 +62,19 @@ namespace GameFromScratch.Entities
             spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Green);
 
             spriteBatch.End();
+        }
+
+        public override void Kill()
+        {
+            var side = Math.Max(Size.X, Size.Y);
+            var posY = Position.Y + Size.Y / 2 - side / 2;
+            scene.AddEntity(new Explosion2(scene, spriteBatch)
+            {
+                Position = new Vector2(Position.X, posY) - new Vector2(side) / 2,
+                Size = new Vector2(side) * 2
+            });
+            explosionSound.Play(.5f, 0, 0);
+            base.Kill();
         }
     }
 }
