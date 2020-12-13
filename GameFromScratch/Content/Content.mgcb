@@ -170,11 +170,23 @@
 /processorParam:TextureFormat=Color
 /build:Sequences/RockExplosion.png
 
+#begin SoundEffects/Alarm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Alarm.wav
+
 #begin SoundEffects/AsteroidExplosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:SoundEffects/AsteroidExplosion.wav
+
+#begin SoundEffects/Radar.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Radar.wav
 
 #begin SoundEffects/ShipExplosion.wav
 /importer:WavImporter
