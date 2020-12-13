@@ -5,6 +5,7 @@ using GameFromScratch.Components;
 using GameFromScratch.Entities;
 using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -24,6 +25,8 @@ namespace GameFromScratch.Scenes.Stages
         private Counter stageCounter;
         private InfoBar infoBar;
         private int enemyMissileCount;
+        private int enemyShipCount;
+        private SoundEffectInstance alarmSound;
 
         private Counter titleTimer = new Counter(1.5f);
 
@@ -36,6 +39,10 @@ namespace GameFromScratch.Scenes.Stages
         {
             components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
+            alarmSound = Game.Content.Load<SoundEffect>("SoundEffects/Alarm").CreateInstance();
+            alarmSound.IsLooped = true;
+            alarmSound.Volume = .5f;
+            
             Title = "Stage 2";
 
             asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f);
@@ -63,7 +70,14 @@ namespace GameFromScratch.Scenes.Stages
             {
                 asteroidCount++;
             }
-            // TODO: check missile
+            if (entity is EnemyMissile)
+            {
+                enemyMissileCount++;
+            }
+            if (entity is EnemyShip)
+            {
+                enemyShipCount++;
+            }
             base.AddEntity(entity);
         }
 
@@ -77,13 +91,33 @@ namespace GameFromScratch.Scenes.Stages
                     destroyedAsteroids++;
                 }
             }
-            // TODO: check missile
+            if (entity is EnemyMissile)
+            {
+                enemyMissileCount--;
+            }
+            if (entity is EnemyShip)
+            {
+                enemyShipCount--;
+                if (entity.Killed)
+                {
+                    destroyedShips++;
+                }
+            }
 
             base.RemoveEntity(entity);
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (enemyMissileCount > 0)
+            {
+                if (alarmSound.State != SoundState.Playing) alarmSound.Play();
+            }
+            else
+            {
+                if (alarmSound.State == SoundState.Playing) alarmSound.Stop();
+            }
+            
             if (player.Health == 0)
             {
                 gameMain.ShowGameOver(this);

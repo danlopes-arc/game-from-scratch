@@ -18,6 +18,9 @@ namespace GameFromScratch.Entities
         private SoundEffect explosionSound;
         private Explosion2 explosionAnimation;
         private Player player;
+        
+        private bool invincible = true;
+        private float invincibleCounter;
 
         private Counter waitTimer = new Counter(2);
         public bool HasShot { get; private set; }
@@ -31,10 +34,21 @@ namespace GameFromScratch.Entities
             // explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
         }
 
+        private void Shoot()
+        {
+            var missile = new EnemyMissile(scene, spriteBatch, player);
+            var y = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
+            missile.Position = new Vector2(Position.X - missile.Size.X, y);
+            scene.AddEntity(missile);
+            HasShot = true;
+        }
         public override void Update(GameTime gameTime)
         {
+            var seconds = (float) gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
 
+            if (invincible) invincibleCounter += seconds;
+            
             if (!Waiting)
             {
                 Velocity = !HasShot ? new Vector2(-MoveSpeed, 0) : new Vector2(MoveSpeed, 0);
@@ -45,6 +59,11 @@ namespace GameFromScratch.Entities
             }
             Move(gameTime);
 
+            if (Position.X + Size.X < ScreenSize.X)
+            {
+                invincible = false;
+            }
+            
             if (!HasShot)
             {
                 var posY = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
@@ -65,11 +84,7 @@ namespace GameFromScratch.Entities
             {
                 if (!HasShot)
                 {
-                    var missile = new EnemyMissile(scene, spriteBatch, player);
-                    var y = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
-                    missile.Position = new Vector2(Position.X - missile.Size.X, y);
-                    scene.AddEntity(missile);
-                    HasShot = true;
+                    Shoot();
                     waitTimer.Reset();
                 }
                 else
@@ -85,10 +100,34 @@ namespace GameFromScratch.Entities
 
             spriteBatch.Begin();
 
+            var color = Color.White;
+
+            if (invincible && ((int) (invincibleCounter % 1 * 10)) % 2 == 0)
+            {
+                color *= 0;
+            }
+            
             // spriteBatch.Draw(Texture, Bounds, Color.White);
-            spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Red);
+            spriteBatch.DrawRectangle(GraphicsDevice, Bounds, color);
 
             spriteBatch.End();
+        }
+        
+        public override void Kill()
+        {
+            if (invincible) return;
+            
+            if (!HasShot)
+            {
+                Shoot();
+            }
+            scene.AddEntity(new Explosion2(scene, spriteBatch)
+            {
+                Position = Position - Size / 2,
+                Size = Size * 2
+            });
+            // explosionSound.Play(.5f, 0, 0);
+            base.Kill();
         }
     }
 }
