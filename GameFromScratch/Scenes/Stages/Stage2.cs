@@ -11,33 +11,34 @@ using Microsoft.Xna.Framework.Media;
 
 namespace GameFromScratch.Scenes.Stages
 {
-    public class Stage1 : Stage
+    public class Stage2 : Stage
     {
         private Player player;
         private SpriteFont font;
         private int destroyedAsteroids;
-        private int missedAsteroids;
+        private int destroyedShips;
         private int asteroidCount;
         private AsteroidSpawner asteroidSpawner;
-        private float stageTime = 0;
+        private ShipSpawner shipSpawner;
+        private float stageTime = 30;
         private Counter stageCounter;
         private InfoBar infoBar;
+        private int enemyMissileCount;
 
         private Counter titleTimer = new Counter(1.5f);
 
-        public override int Score => destroyedAsteroids * 100;
+        public override int Score => destroyedAsteroids * 100 + destroyedShips * 500;
 
         public override Rectangle Bounds => new Rectangle(0, InfoBar.Height, GraphicsDevice.Viewport.Width,
             GraphicsDevice.Viewport.Height - InfoBar.Height);
 
-        public Stage1(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
+        public Stage2(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             components.Add(new ScrollingBackground(game, spriteBatch));
             font = Game.Content.Load<SpriteFont>("Fonts/ScreenInfo");
-            Title = "Stage 1";
+            Title = "Stage 2";
 
             asteroidSpawner = new AsteroidSpawner(game, this, spriteBatch, .5f);
-
             components.Add(asteroidSpawner);
 
             player = new Player(this, spriteBatch)
@@ -47,6 +48,9 @@ namespace GameFromScratch.Scenes.Stages
             player.Position = new Vector2(10, GraphicsDevice.Viewport.Height / 2f - player.Size.Y / 2);
 
             AddEntity(player);
+            
+            shipSpawner = new ShipSpawner(game, this, spriteBatch, player);
+            components.Add(shipSpawner);
 
             stageCounter = new Counter(stageTime);
             infoBar = new InfoBar(game, spriteBatch);
@@ -59,7 +63,7 @@ namespace GameFromScratch.Scenes.Stages
             {
                 asteroidCount++;
             }
-
+            // TODO: check missile
             base.AddEntity(entity);
         }
 
@@ -72,11 +76,8 @@ namespace GameFromScratch.Scenes.Stages
                 {
                     destroyedAsteroids++;
                 }
-                else
-                {
-                    missedAsteroids++;
-                }
             }
+            // TODO: check missile
 
             base.RemoveEntity(entity);
         }

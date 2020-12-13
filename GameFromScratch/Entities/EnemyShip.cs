@@ -17,13 +17,15 @@ namespace GameFromScratch.Entities
         
         private SoundEffect explosionSound;
         private Explosion2 explosionAnimation;
+        private Player player;
 
         private Counter waitTimer = new Counter(2);
         public bool HasShot { get; private set; }
         public bool Waiting { get; private set; }
 
-        public EnemyShip(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
+        public EnemyShip(GameScene scene, SpriteBatch spriteBatch, Player player) : base(scene, spriteBatch)
         {
+            this.player = player;
             Size = new Vector2(80, 80);
             // Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
             // explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
@@ -57,7 +59,10 @@ namespace GameFromScratch.Entities
             {
                 if (!HasShot)
                 {
-                    // TODO: shoot
+                    var missile = new EnemyMissile(scene, spriteBatch, player);
+                    var y = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
+                    missile.Position = new Vector2(Position.X - missile.Size.X, y);
+                    scene.AddEntity(missile);
                     HasShot = true;
                     waitTimer.Reset();
                 }

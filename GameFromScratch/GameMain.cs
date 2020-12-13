@@ -84,6 +84,10 @@ namespace GameFromScratch
             var stage1 = new Stage1(this, spriteBatch);
             stages.Add(stage1);
             Components.Add(stage1);
+            
+            var stage2 = new Stage2(this, spriteBatch);
+            stages.Add(stage2);
+            Components.Add(stage2);
         }
 
         public void ShowGameOver(GameScene mainScene)
@@ -168,7 +172,7 @@ namespace GameFromScratch
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             base.Draw(gameTime);
         }
     }

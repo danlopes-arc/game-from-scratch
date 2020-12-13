@@ -12,12 +12,14 @@ namespace GameFromScratch.Utils
         private Counter shipTimer;
         private SpriteBatch spriteBatch;
         private Stage stage;
+        private Player player;
         private Random r = new Random();
         
-        public ShipSpawner(Game game, Stage stage, SpriteBatch spriteBatch) : base(game)
+        public ShipSpawner(Game game, Stage stage, SpriteBatch spriteBatch, Player player) : base(game)
         {
             this.stage = stage;
             this.spriteBatch = spriteBatch;
+            this.player = player;
             shipTimer = new Counter(3);
         }
 
@@ -41,7 +43,7 @@ namespace GameFromScratch.Utils
                 return;
             }
 
-            ship = new EnemyShip(stage, spriteBatch);
+            ship = new EnemyShip(stage, spriteBatch, player);
             var height = r.Next(stage.Bounds.Top ,stage.Bounds.Bottom - (int) ship.Size.Y);
             ship.Position = new Vector2(stage.Bounds.Width, height);
             stage.AddEntity(ship);
