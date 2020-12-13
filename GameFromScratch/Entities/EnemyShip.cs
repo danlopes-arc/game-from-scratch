@@ -45,6 +45,12 @@ namespace GameFromScratch.Entities
             }
             Move(gameTime);
 
+            if (!HasShot)
+            {
+                var posY = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
+                Position = new Vector2(Position.X, posY);
+            }
+            
             if (!HasShot && Position.X < ScreenSize.X - MoveDistance)
             {
                 Waiting = true;
