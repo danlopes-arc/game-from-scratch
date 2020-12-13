@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using GameFromScratch.Components;
+using GameFromScratch.Extensions;
 using GameFromScratch.Utils;
 
 namespace GameFromScratch.Scenes
@@ -12,6 +13,7 @@ namespace GameFromScratch.Scenes
     public class CongratulationScene : GameScene
     {
         private SpriteFont font;
+
         public CongratulationScene(GameMain game, SpriteBatch spriteBatch) : base(game, spriteBatch)
         {
             components.Add(new ScrollingBackground(game, spriteBatch));
@@ -33,11 +35,15 @@ namespace GameFromScratch.Scenes
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            var text = $"CONGRATULATIONS!!!{Environment.NewLine}" +
-                $"Press ENTER to continue";
-            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(text).X / 2;
-            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(text).Y / 2;
-            spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
+
+            var richText = new RichString() +
+                           "CONGRATULATIONS!!!\n\nYou beat the game!\n\nPress " +
+                           ("ENTER ", Color.Cyan) +
+                           "to continue";
+            
+            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(richText.ToString()).X / 2;
+            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(richText.ToString()).Y / 2;
+            spriteBatch.DrawRichString(font, richText, new Vector2(x, y));
 
             spriteBatch.End();
         }

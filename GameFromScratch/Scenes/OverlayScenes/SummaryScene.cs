@@ -47,10 +47,13 @@ namespace GameFromScratch.Scenes.OverlayScenes
             spriteBatch.DrawString(font, text,
                 new Vector2(Bounds.Right / 2f - size.X / 2, Bounds.Bottom / 2f - size.Y / 2), Color.White);
 
-            text = "Press ENTER to continue";
-            size = font.MeasureString(text);
-            spriteBatch.DrawString(font, text,
-                new Vector2(Bounds.Right / 2f - size.X / 2, Bounds.Bottom - size.Y - 60), Color.White);
+            var richText = new RichString() +
+                           "Press " +
+                           ("ENTER ", Color.Cyan) +
+                           "to continue";
+            
+            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(richText.ToString()).X / 2;
+            spriteBatch.DrawRichString(font, richText, new Vector2(x, Bounds.Bottom - size.Y - 60));
 
             spriteBatch.End();
         }

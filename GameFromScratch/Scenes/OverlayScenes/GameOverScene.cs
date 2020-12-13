@@ -33,11 +33,14 @@ namespace GameFromScratch.Scenes.OverlayScenes
             spriteBatch.Begin();
             
             spriteBatch.DrawFillRectangle(GraphicsDevice, Bounds, Color.Black * .5f);
-            var text = $"GAME OVER{Environment.NewLine}" +
-                $"Press ENTER to continue";
-            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(text).X / 2;
-            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(text).Y / 2;
-            spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
+            var richText = new RichString() +
+                           "GAME OVER\nPress " +
+                           ("ENTER ", Color.Cyan) +
+                           "to continue";
+            
+            var x = Game.GraphicsDevice.Viewport.Width / 2f - font.MeasureString(richText.ToString()).X / 2;
+            var y = Game.GraphicsDevice.Viewport.Height / 2f - font.MeasureString(richText.ToString()).Y / 2;
+            spriteBatch.DrawRichString(font, richText, new Vector2(x, y));
 
             spriteBatch.End();
         }
