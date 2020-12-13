@@ -37,7 +37,7 @@ namespace GameFromScratch.Entities
         private void Shoot()
         {
             var missile = new EnemyMissile(scene, spriteBatch, player);
-            var y = player.Position.Y + player.Size.Y / 2 - Size.Y / 2;
+            var y = player.Position.Y + player.Size.Y / 2 - missile.Size.Y / 2;
             missile.Position = new Vector2(Position.X - missile.Size.X, y);
             scene.AddEntity(missile);
             HasShot = true;
