@@ -58,15 +58,17 @@ namespace GameFromScratch.Scenes
 
             var richText = new RichString() +
                            "Press " +
-                           ("Up/W ", Color.Cyan) +
-                           "or " +
-                           ("Down/S ", Color.Cyan) +
+                           ("Up/Down ", Color.Cyan) +
+                           "or use the " +
+                           ("MOUSE ", Color.Cyan) +
                            "to navigate\nPress " +
                            ("ENTER ", Color.Cyan) +
+                           "or " +
+                           ("CLICK ", Color.Cyan) +
                            "to select";
 
             spriteBatch.DrawRichString(font, richText,
-                new Vector2(100, Game.GraphicsDevice.Viewport.Height - font.MeasureString(richText.ToString()).Y - 20));
+                new Vector2(100, Game.GraphicsDevice.Viewport.Height - font.MeasureString(richText.ToString()).Y - 40));
 
             spriteBatch.End();
         }
