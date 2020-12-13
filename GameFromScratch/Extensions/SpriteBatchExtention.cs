@@ -1,9 +1,9 @@
 ﻿using System;
-using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Extensions
+namespace PlanetDefender.Extensions
 {
     public static class SpriteBatchExtension
     {

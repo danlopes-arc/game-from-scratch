@@ -1,12 +1,10 @@
-﻿using GameFromScratch.Animation;
-using GameFromScratch.Entities.Animations;
-using GameFromScratch.Extensions;
-using GameFromScratch.Scenes;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Entities.Animations;
+using PlanetDefender.Scenes;
 
-namespace GameFromScratch.Entities
+namespace PlanetDefender.Entities
 {
     public class Asteroid : Entity
     {

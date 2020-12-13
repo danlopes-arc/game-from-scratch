@@ -1,15 +1,13 @@
-﻿using GameFromScratch.Scenes;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using GameFromScratch.Scenes.OverlayScenes;
-using GameFromScratch.Scenes.Stages;
-using GameFromScratch.Utils;
 using Microsoft.Xna.Framework.Media;
+using PlanetDefender.Scenes;
+using PlanetDefender.Scenes.OverlayScenes;
+using PlanetDefender.Scenes.Stages;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch
+namespace PlanetDefender
 {
     public class GameMain : Game
     {

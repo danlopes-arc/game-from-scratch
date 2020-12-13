@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GameFromScratch.Entities;
+using PlanetDefender.Entities;
 
-namespace GameFromScratch.Utils
+namespace PlanetDefender.Utils
 {
     public class CollisionManager
     {

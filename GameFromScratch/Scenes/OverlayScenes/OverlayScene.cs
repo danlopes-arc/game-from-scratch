@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameFromScratch.Scenes.OverlayScenes
+namespace PlanetDefender.Scenes.OverlayScenes
 {
     public abstract class OverlayScene : GameScene
     {

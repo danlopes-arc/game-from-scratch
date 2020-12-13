@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameFromScratch.Components
+namespace PlanetDefender.Components
 {
     public class ScrollingBackground : DrawableGameComponent
     {

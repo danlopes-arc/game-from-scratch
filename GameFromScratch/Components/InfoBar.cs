@@ -1,10 +1,9 @@
-﻿using System;
-using GameFromScratch.Extensions;
-using GameFromScratch.Utils;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Extensions;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Components
+namespace PlanetDefender.Components
 {
     public class InfoBar : DrawableGameComponent
     {

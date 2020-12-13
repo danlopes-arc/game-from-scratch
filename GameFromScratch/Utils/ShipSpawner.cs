@@ -1,10 +1,10 @@
 ﻿using System;
-using GameFromScratch.Entities;
-using GameFromScratch.Scenes.Stages;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Entities;
+using PlanetDefender.Scenes.Stages;
 
-namespace GameFromScratch.Utils
+namespace PlanetDefender.Utils
 {
     public class ShipSpawner : GameComponent
     {

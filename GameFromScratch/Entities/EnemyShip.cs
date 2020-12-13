@@ -1,14 +1,12 @@
 ﻿using System;
-using GameFromScratch.Entities.Animations;
-using GameFromScratch.Extensions;
-using GameFromScratch.Scenes;
-using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using PlanetDefender.Entities.Animations;
+using PlanetDefender.Scenes;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Entities
+namespace PlanetDefender.Entities
 {
     public class EnemyShip : Entity
     {

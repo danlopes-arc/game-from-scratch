@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GameFromScratch.Components;
-using GameFromScratch.Entities;
-using GameFromScratch.Utils;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
+using PlanetDefender.Components;
+using PlanetDefender.Entities;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Scenes.Stages
+namespace PlanetDefender.Scenes.Stages
 {
     public class Stage1 : Stage
     {

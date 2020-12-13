@@ -1,11 +1,11 @@
 ﻿using System;
-using GameFromScratch.Extensions;
-using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PlanetDefender.Extensions;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Scenes.OverlayScenes
+namespace PlanetDefender.Scenes.OverlayScenes
 {
     public class PauseScene : OverlayScene
     {

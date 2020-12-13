@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameFromScratch
+namespace PlanetDefender
 {
     public static class Program
     {

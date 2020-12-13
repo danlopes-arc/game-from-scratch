@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace GameFromScratch.Utils
+namespace PlanetDefender.Utils
 {
     public static class BetterKeyboardState
     {

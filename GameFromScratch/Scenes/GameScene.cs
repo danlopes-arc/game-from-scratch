@@ -1,13 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using GameFromScratch.Entities;
-using GameFromScratch.Utils;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Entities;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Scenes
+namespace PlanetDefender.Scenes
 {
     public abstract class GameScene : DrawableGameComponent
     {

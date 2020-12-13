@@ -1,8 +1,8 @@
-﻿using GameFromScratch.Utils;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Animation
+namespace PlanetDefender.Animation
 {
     public class Animator
     {

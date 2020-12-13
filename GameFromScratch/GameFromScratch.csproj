@@ -5,6 +5,12 @@
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>PlanetDefender</AssemblyName>
+    <RootNamespace>PlanetDefender</RootNamespace>
+    <PackageId>PlanetDefender</PackageId>
+    <Authors>PlanetDefender</Authors>
+    <Company>PlanetDefender</Company>
+    <Product>PlanetDefender</Product>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>

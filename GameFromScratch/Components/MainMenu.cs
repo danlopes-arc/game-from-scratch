@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using GameFromScratch.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Components
+namespace PlanetDefender.Components
 {
     public class MainMenu : DrawableGameComponent
     {

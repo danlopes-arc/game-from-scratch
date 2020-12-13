@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using GameFromScratch.Components;
-using GameFromScratch.Extensions;
-using GameFromScratch.Utils;
+using PlanetDefender.Components;
+using PlanetDefender.Extensions;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Scenes
+namespace PlanetDefender.Scenes
 {
     public class CongratulationScene : GameScene
     {

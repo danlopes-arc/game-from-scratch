@@ -1,4 +1,4 @@
-﻿namespace GameFromScratch.Utils
+﻿namespace PlanetDefender.Utils
 {
     public class Counter
     {

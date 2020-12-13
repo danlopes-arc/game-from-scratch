@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameFromScratch.Animation
+namespace PlanetDefender.Animation
 {
     public class Sequence
     {

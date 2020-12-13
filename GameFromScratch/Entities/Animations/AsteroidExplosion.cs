@@ -1,9 +1,9 @@
-﻿using GameFromScratch.Animation;
-using GameFromScratch.Scenes;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlanetDefender.Animation;
+using PlanetDefender.Scenes;
 
-namespace GameFromScratch.Entities.Animations
+namespace PlanetDefender.Entities.Animations
 {
     public class AsteroidExplosion : Entity
     {

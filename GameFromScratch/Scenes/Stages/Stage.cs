@@ -1,9 +1,9 @@
-﻿using GameFromScratch.Utils;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PlanetDefender.Utils;
 
-namespace GameFromScratch.Scenes.Stages
+namespace PlanetDefender.Scenes.Stages
 {
     public abstract class Stage : GameScene
     {
