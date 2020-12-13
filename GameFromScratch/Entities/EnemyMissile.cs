@@ -18,7 +18,7 @@ namespace GameFromScratch.Entities
             this.player = player;
             Size = new Vector2(40, 20);
             Velocity = new Vector2(-200, 0);
-            // Texture = Game.Content.Load<Texture2D>("Images/Missile");
+            Texture = Game.Content.Load<Texture2D>("Images/EnemyMissile");
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/AsteroidExplosion");
         }
 
@@ -59,7 +59,7 @@ namespace GameFromScratch.Entities
             spriteBatch.Begin();
 
             // spriteBatch.Draw(Texture, Bounds, Color.White);
-            spriteBatch.DrawRectangle(GraphicsDevice, Bounds, Color.Green);
+            spriteBatch.Draw(Texture, Bounds, null, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
 
             spriteBatch.End();
         }
