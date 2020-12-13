@@ -18,6 +18,7 @@ namespace PlanetDefender
         
         private StartScene startScene;
         private CongratulationScene congratulationScene;
+        private HelpScene helpScene;
         
         private GameOverScene gameOverScene;
         private PauseScene pauseScene;
@@ -43,6 +44,7 @@ namespace PlanetDefender
 
             startScene = new StartScene(this, spriteBatch);
             congratulationScene = new CongratulationScene(this, spriteBatch);
+            helpScene = new HelpScene(this, spriteBatch);
             
             gameOverScene = new GameOverScene(this, spriteBatch);
             pauseScene = new PauseScene(this, spriteBatch);
@@ -50,6 +52,7 @@ namespace PlanetDefender
 
             Components.Add(startScene);
             Components.Add(congratulationScene);
+            Components.Add(helpScene);
             
             Components.Add(gameOverScene);
             Components.Add(pauseScene);
@@ -117,6 +120,12 @@ namespace PlanetDefender
             HideAllScenes();
             startScene.Show();
             MediaPlayer.Play(Content.Load<Song>("Music/ChillSong"));
+        }
+        
+        public void ShowHelp()
+        {
+            HideAllScenes();
+            helpScene.Show();
         }
 
         public void ShowCongratulation()
