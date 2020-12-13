@@ -19,6 +19,8 @@ namespace GameFromScratch.Utils
             get => counter.Total;
             set => counter.Total = value;
         }
+
+        public bool Active { get; set; } = true;
         
         public ShipSpawner(Game game, Stage stage, SpriteBatch spriteBatch, Player player, float delay = 3) : base(game)
         {
@@ -32,7 +34,8 @@ namespace GameFromScratch.Utils
         {
             var seconds = (float) gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
-
+            if (!Active) return;
+            
             if (ship != null)
             {
                 if (ship.Destroyed)
