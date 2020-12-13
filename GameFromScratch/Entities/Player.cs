@@ -75,9 +75,9 @@ namespace GameFromScratch.Entities
 
         public Player(GameScene scene, SpriteBatch spriteBatch) : base(scene, spriteBatch)
         {
-            Size = new Vector2(80, 80);
+            Size = new Vector2(80, 40);
             shotTimer = new Counter(.3f);
-            Texture = Game.Content.Load<Texture2D>("Images/SpaceShipTopView");
+            Texture = Game.Content.Load<Texture2D>("Images/YellowShip");
             explosionSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipExplosion");
             hitSound = Game.Content.Load<SoundEffect>("SoundEffects/ShipHit");
         }
