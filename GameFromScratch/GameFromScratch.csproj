@@ -7,14 +7,15 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>PlanetDefender</AssemblyName>
     <RootNamespace>PlanetDefender</RootNamespace>
-    <PackageId>PlanetDefender</PackageId>
+    <PackageId>Planet Defender</PackageId>
     <Authors>DLA&amp;PB</Authors>
     <Company>DLA&amp;PB</Company>
     <Product>Planet Defender</Product>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>TerranPlanet.ico</ApplicationIcon>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <Description>Pretty good game</Description>
+    <Copyright>Copyright © 2020</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
